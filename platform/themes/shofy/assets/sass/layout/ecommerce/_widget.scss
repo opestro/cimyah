@@ -1,0 +1,71 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  8.15 Product Widget CSS
+/*----------------------------------------*/
+
+.#{$theme-prefix}-shop-widget {
+    &-title {
+        font-weight: 500;
+        font-size: 18px;
+        border-bottom: 1px solid #eeeeee;
+        padding-bottom: 5px;
+        margin-bottom: 25px;
+        &.no-border {
+            border: 0;
+            padding-bottom: 0;
+            margin-bottom: 14px;
+        }
+    }
+    &-product {
+        &-item {
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
+        &-rating {
+            @include flexbox();
+            align-items: center;
+            margin-right: 4px;
+            & span {
+                font-size: 12px;
+                color: #ffb21d;
+                margin-right: 1px;
+            }
+
+            &-number {
+                & span {
+                    font-weight: 500;
+                    font-size: 12px;
+                    color: #818487;
+                }
+            }
+        }
+        &-thumb {
+            flex: 0 0 auto;
+            & img {
+                width: 70px;
+                height: 70px;
+                object-fit: cover;
+                margin-right: 14px;
+            }
+        }
+        &-title {
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+        &-price {
+            font-size: 14px;
+            color: #55585b;
+        }
+    }
+    &-brand {
+        margin-right: 40px;
+        &-item {
+            width: 50%;
+            flex: 0 0 50%;
+            margin-bottom: 30px;
+        }
+    }
+}

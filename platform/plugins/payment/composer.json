@@ -1,0 +1,6 @@
+{
+    "name": "botble/payment",
+    "description": "Payment plugin",
+    "type": "package",
+    "require": {}
+}

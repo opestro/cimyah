@@ -1,0 +1,13 @@
+.tp-featured-category {
+    $prefix: &;
+
+    #{$prefix} {
+        &-image {
+            border-radius: 16px;
+
+            img {
+                border-radius: 16px;
+            }
+        }
+    }
+}

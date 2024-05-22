@@ -1,0 +1,140 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  8.16 Shop CSS
+/*----------------------------------------*/
+
+.#{$theme-prefix}-shop-top {
+    &-select {
+        & .nice-select {
+            background-color: #f9f9f9;
+            border: 1px solid rgba($color: $black, $alpha: 0.1);
+            border-radius: 0;
+            font-size: 14px;
+            color: var(--tp-common-black);
+            height: 40px;
+            line-height: 38px;
+            padding: 0 25px;
+            min-width: 180px;
+            float: none;
+
+            @media #{$xs} {
+                max-width: 280px;
+            }
+            &::after {
+                right: 20px;
+                color: #767a7d;
+            }
+
+            &.open {
+                & .list {
+                    @include transform(scale(1) translateY(0px));
+                }
+            }
+
+            & .list {
+                margin-top: 0;
+                border-radius: 0;
+                transform-origin: center center;
+                @include transform(scale(0.9) translateY(0px));
+                width: 100%;
+                padding: 10px 0;
+                & .option {
+                    line-height: 1.2;
+                    min-height: inherit;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                }
+            }
+        }
+
+        &.sort-by {
+            & .nice-select {
+                min-width: 6rem;
+            }
+        }
+    }
+    &-result {
+        & p {
+            font-weight: 400;
+            font-size: 16px;
+            color: #818487;
+            margin-bottom: 0;
+        }
+    }
+    &-tab {
+        margin-right: 22px;
+        @media #{$xs} {
+            margin-right: 10px;
+        }
+        & .nav-tabs {
+            & .nav-item {
+                & .nav-link {
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    line-height: 38px;
+                    text-align: center;
+                    font-size: 18px;
+                    color: #818487;
+                    border: 1px solid rgba($color: $black, $alpha: 0.1);
+                    border-radius: 0;
+                    margin-right: 6px;
+                    & svg {
+                        width: 1.35rem;
+                        height: 1.35rem;
+
+                        @extend %tp-svg-y-2;
+                    }
+                    &.active {
+                        color: var(--tp-common-black);
+                        border-color: var(--tp-common-black);
+                    }
+                }
+            }
+        }
+    }
+    &-right {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        @media #{$sm, $xs} {
+            margin-top: 30px;
+        }
+        &:not(.tp-shop-top-right-2) {
+            @media #{$lg, $md, $sm, $xs} {
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+.#{$theme-prefix}-shop {
+    &-main-wrapper {
+        position: relative;
+    }
+    &-full-width-padding {
+        padding-left: 80px;
+        padding-right: 80px;
+
+        @media #{$lg} {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        @media #{$md, $sm, $xs} {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+.#{$theme-prefix}-shop-item-primary {
+    .tp-product-tag-2 a:hover,
+    .tp-product-title-2 a:hover {
+        color: var(--tp-theme-primary);
+    }
+    .tp-product-tag-2 a::after {
+        background-color: var(--tp-theme-primary);
+    }
+}

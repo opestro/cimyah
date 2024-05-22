@@ -1,0 +1,75 @@
+$colors: (
+    'common': (
+        'white': #ffffff,
+        'black-solid': #000,
+        'black': #010f1c,
+    ),
+    'yellow': (
+        '1': #ffb342,
+        '2': #ffd43a,
+        '3': #ffb21d,
+    ),
+    'pink': (
+        '1': #fd4b6b,
+        '2': #fd2d6c,
+        '3': #ff296a,
+        '4': #ff3494,
+    ),
+    'green': (
+        'dark': #115061,
+        '1': #31b757,
+    ),
+    'khaki': (
+        '1': #ab9774,
+    ),
+    'blue': (
+        '1': #0058AB,
+    ),
+    'orange': (
+        '1': #ff6736,
+    ),
+    'heading': (
+        'primary': #010f1c,
+        'secondary': #021d35,
+    ),
+    'grey': (
+        '1': #f6f7f9,
+        '2': #ecf2f7,
+        '3': #cad4db,
+        '4': #f8f8f8,
+        '5': #eff0ed,
+        '6': #eff1f5,
+        '7': #f6f6f6,
+        '8': #eae4de,
+        '9': #e5e9f2,
+    ),
+    'text': (
+        'body': #55585b,
+        '1': #767a7d,
+        '2': #55585b,
+        '3': #747679,
+        '4': #7d7f82,
+        '5': #888a8c,
+        '6': #90969b,
+    ),
+    'theme': (
+        'primary': var(--primary-color),
+        'secondary': #821f40,
+        'brown': #bd844c,
+        'green': #678e61,
+    ),
+    'footer': (
+        'grey-1': #f4f7f9,
+    ),
+    'border': (
+        'primary': #eaebed,
+        'secondary': #f0f2f4,
+        '3': #e4e5e9,
+        '4': #e6e7e8,
+    ),
+);
+
+$white: #fff;
+$black: #010f1c;
+$theme-primary: #0989ff;
+$border-primary: #eaebed;

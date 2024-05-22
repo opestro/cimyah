@@ -1,0 +1,50 @@
+.swatches-container {
+    .header {
+        tr {
+            &:before {
+                content: '#';
+                display: table-cell;
+                width: 45px;
+                text-align: center;
+                line-height: 2rem;
+                background: var(--bb-bg-surface-tertiary);
+                color: var(--bb-secondary);
+                font-size: 0.625rem;
+                font-weight: var(--bb-font-weight-bold);
+            }
+        }
+    }
+
+    .swatches-list {
+        tr {
+            padding-left: 50px;
+            position: relative;
+            counter-increment: swatches-list;
+
+            &:before {
+                content: counter(swatches-list);
+                width: 50px;
+                position: absolute;
+                height: 100%;
+                top: 0;
+                left: 0;
+                cursor: move;
+                background-color: var(--bb-secondary-bg);
+                color: var(--bb-secondar-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .image-box {
+                .preview-image-wrapper {
+                    width: 3rem !important;
+                }
+
+                > a[data-bb-toggle='image-picker-choose'] {
+                    display: none;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "id": "botble/sale-popup",
+    "name": "Sale Popup",
+    "namespace": "Botble\\SalePopup\\",
+    "provider": "Botble\\SalePopup\\Providers\\SalePopupServiceProvider",
+    "author": "Botble Technologies",
+    "url": "https://botble.com",
+    "version": "1.0.1",
+    "description": "Fake Sales Notifications"
+}

@@ -1,0 +1,10 @@
+{
+    "id": "archielite/announcement",
+    "name": "Announcement",
+    "namespace": "ArchiElite\\Announcement\\",
+    "provider": "ArchiElite\\Announcement\\Providers\\AnnouncementServiceProvider",
+    "author": "Archi Elite",
+    "url": "https://archielite.com",
+    "version": "1.0.1",
+    "description": "The easiest way and the most effective to announce your news, updates, promotions, events to your customers."
+}

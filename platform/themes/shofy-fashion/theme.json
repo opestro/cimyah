@@ -1,0 +1,10 @@
+{
+    "id": "botble/shofy-fashion",
+    "name": "Shofy Fashion",
+    "namespace": "Theme\\ShofyFashion\\",
+    "author": "Botble Technologies",
+    "url": "https://botble.com",
+    "version": "1.0.9",
+    "description": "Shofy - eCommerce & Multivendor Marketplace Laravel Platform",
+    "required_plugins": ["ecommerce"]
+}

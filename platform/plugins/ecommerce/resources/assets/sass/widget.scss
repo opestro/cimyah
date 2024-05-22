@@ -1,0 +1,79 @@
+.ecommerce-status-list {
+    margin-left: 10px;
+
+    li {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        float: left;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        border-top: 1px solid var(--bb-card-border-color);
+        color: #aaa;
+
+        a {
+            display: block;
+            color: #aaa;
+            padding: 9px 12px;
+            -webkit-transition: all ease 0.5s;
+            transition: all ease 0.5s;
+            position: relative;
+            font-size: 12px;
+
+            &:hover {
+                color: #2ea2cc;
+            }
+
+            strong {
+                font-size: 18px;
+                line-height: 1.2em;
+                font-weight: 400;
+                display: block;
+                color: rgba(var(--bb-link-color-rgb), var(--bb-link-opacity, 1));
+            }
+        }
+
+        svg.icon {
+            font-size: 30px;
+            margin-left: 10px;
+        }
+
+        &.sales-this-month {
+            width: 100%;
+
+            svg.icon {
+                color: #464646;
+            }
+        }
+
+        &.processing-orders {
+            border-right: 1px solid #ececec;
+
+            svg.icon {
+                color: #7ad03a;
+            }
+        }
+
+        &.completed-orders {
+            svg.icon {
+                color: #999;
+            }
+        }
+
+        &.low-in-stock {
+            border-right: 1px solid #ececec;
+
+            svg.icon {
+                color: #ffba00;
+            }
+        }
+
+        &.out-of-stock {
+            svg.icon {
+                color: #a00;
+            }
+        }
+    }
+}

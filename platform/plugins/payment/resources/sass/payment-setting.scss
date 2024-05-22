@@ -1,0 +1,77 @@
+.payment-method-item {
+    .well {
+        padding: 15px;
+    }
+
+    .border-pay-row {
+        background: #fff;
+
+        .border-right {
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+        }
+
+        .border-pay-col {
+            text-align: center;
+            vertical-align: middle;
+            border-right: var(--bb-border-width) var(--bb-border-style) var(--bb-border-color) !important;
+
+            i.fa.fa-theme-payments {
+                background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20class%3D%22icon%20icon-tabler%20icon-tabler-wallet%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20stroke-width%3D%222%22%20stroke%3D%22currentColor%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%0A%20%20%3Cpath%20stroke%3D%22none%22%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M17%208v-3a1%201%200%200%200%20-1%20-1h-10a2%202%200%200%200%200%204h12a1%201%200%200%201%201%201v3m0%204v3a1%201%200%200%201%20-1%201h-12a2%202%200%200%201%20-2%20-2v-12%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M20%2012v4h-4a2%202%200%200%201%200%20-4h4%22%20%2F%3E%0A%3C%2Fsvg%3E");
+                width: 32px;
+                height: 32px;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+
+        img.filter-black {
+            width: 5rem;
+        }
+    }
+
+    .payment-content-item {
+        background: #fff;
+
+        form {
+            > .row {
+                > .col-sm-6 {
+                    > ul {
+                        list-style: none;
+                        padding: 0;
+
+                        > li {
+                            > label, > p {
+                                margin-bottom: 0.5rem;
+                                font-size: 0.875rem;
+                                font-weight: var(--bb-font-weight-medium);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .btn.toggle-payment-item {
+        --bb-btn-icon-size: 1.25rem;
+        --bb-btn-bg: var(--bb-bg-surface);
+        --bb-btn-color: var(--bb-body-color);
+        --bb-btn-border-color: var(--bb-border-color);
+        --bb-btn-hover-bg: var(--bb-btn-bg);
+        --bb-btn-hover-border-color: var(--bb-border-active-color);
+        --bb-btn-box-shadow: var(--bb-box-shadow-input);
+        --bb-btn-active-color: var(--bb-primary);
+        --bb-btn-active-bg: rgba(var(--bb-primary-rgb), 0.04);
+        --bb-btn-active-border-color: var(--bb-primary);
+
+        &:hover {
+            color: var(--bb-btn-hover-color);
+            text-decoration: none;
+            background-color: var(--bb-btn-hover-bg);
+            border-color: var(--bb-btn-hover-border-color);
+        }
+    }
+}

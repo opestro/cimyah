@@ -1,0 +1,42 @@
+.tp {
+    &-category-thumb-2 {
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &-instagram-icon-2 {
+        a {
+            width: 100%;
+            height: auto;
+            padding: 16px 20px;
+            line-height: initial;
+        }
+    }
+
+    &-blog-thumb-2 {
+        img {
+            height: 325px;
+            object-fit: cover;
+        }
+    }
+
+    &-featured {
+        &-thumb {
+            &.include-bg {
+                background-position: right;
+                background-repeat: no-repeat;
+                background-size: 50%;
+            }
+        }
+
+        &-content {
+            max-width: 50%;
+        }
+    }
+
+    &-product-thumb-2 {
+        background-color: rgb(242, 243, 245);
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "name": "botble/ecommerce",
+    "description": "The most powerful Laravel eCommerce system",
+    "type": "package",
+    "require": {
+        "khaled.alshamaa/ar-php": "^6.3",
+        "bacon/bacon-qr-code": "^v3.0"
+    }
+}

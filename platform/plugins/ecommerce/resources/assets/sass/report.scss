@@ -1,0 +1,17 @@
+.report-chart-content {
+    .rp-card-chart {
+        min-height: 200px;
+    }
+
+    .rp-card-information {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+    }
+}

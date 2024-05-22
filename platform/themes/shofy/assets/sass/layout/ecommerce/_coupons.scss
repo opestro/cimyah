@@ -1,0 +1,203 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  8.26 Coupon CSS
+/*----------------------------------------*/
+
+.#{$theme-prefix}-coupon {
+    $coupon: '.tp-coupon';
+
+    &-item {
+        padding: 20px 20px;
+        border: 1px solid var(--tp-border-primary);
+        height: 100%;
+    }
+    &-thumb {
+        & svg {
+            width: 100px;
+            height: 100px;
+            margin-inline-end: 20px;
+        }
+    }
+    &-title {
+        font-size: 17px;
+        margin-bottom: 3px;
+        font-weight: 500;
+    }
+    &-content {
+        @media #{$xs} {
+            margin-top: 20px;
+        }
+    }
+    &-countdown {
+        & ul {
+            & li {
+                list-style: none;
+                font-size: 12px;
+                color: var(--tp-common-black);
+                display: inline-block;
+                padding: 0 12px;
+                position: relative;
+                text-transform: uppercase;
+                &:first-child {
+                    padding-inline-start: 0;
+                }
+                & span {
+                    display: block;
+                    line-height: 1;
+                }
+
+                &:not(:last-child) {
+                    &::after {
+                        position: absolute;
+                        inset-inline-end: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 1px;
+                        height: 17px;
+                        content: '';
+                        background-color: #ebebeb;
+                    }
+                }
+            }
+        }
+    }
+    &-offer {
+        font-size: 18px;
+        font-weight: 600;
+        & span {
+            color: #ff2400;
+            margin-inline-end: 3px;
+        }
+    }
+    &-status {
+        & h4 {
+            font-weight: 400;
+            font-size: 14px;
+
+            & span {
+                color: #ff2400;
+                display: inline-block;
+            }
+            & span.active {
+                color: green;
+            }
+        }
+
+        &:hover {
+            #{$coupon} {
+                &-info-tooltip {
+                    visibility: visible;
+                    opacity: 1;
+                    bottom: calc(100% + 12px);
+                }
+                &-info-details {
+                    & span {
+                        color: #8e959b;
+                    }
+                }
+            }
+        }
+    }
+    &-date {
+        margin-bottom: 1rem;
+
+        & span {
+            display: inline-block;
+            background-color: rgba($color: #008080, $alpha: 0.1);
+            border: 2px dashed rgba($color: #008080, $alpha: 0.4);
+            padding: 6px 30px;
+            font-size: 15px;
+            color: #008080;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+    }
+
+    &-info {
+        &-details {
+            position: relative;
+
+            & span {
+                color: #bcbfc2;
+                margin-inline-start: 7px;
+                @extend %tp-transition;
+                display: inline-block;
+                & svg {
+                    width: 16px;
+                    height: 16px;
+                    @include transform(translateY(-5px));
+                }
+            }
+
+            &:hover {
+                & span {
+                    color: #8e959b;
+                }
+            }
+        }
+        &-tooltip {
+            position: absolute;
+            bottom: calc(100% + 25px);
+            inset-inline-end: -22px;
+            min-width: 286px;
+            background-color: var(--tp-common-white);
+            padding: 13px 20px 15px;
+            box-shadow: 0px 10px 30px rgba(4, 11, 17, 0.14);
+            visibility: hidden;
+            opacity: 0;
+            z-index: 9;
+
+            @media #{$sm} {
+                inset-inline-end: auto;
+                inset-inline-start: -98px;
+            }
+
+            @media #{$xs} {
+                inset-inline-end: auto;
+                inset-inline-start: -127px;
+            }
+
+            @include rtl {
+                inset-inline-start: auto;
+                bottom: calc(100% + 25px);
+            }
+
+            &::after {
+                position: absolute;
+                content: '';
+                inset-inline-end: 15px;
+                bottom: 0;
+                width: 18px;
+                height: 18px;
+                background-color: var(--tp-common-white);
+                @include transform(rotate(45deg) translateY(50%));
+
+                @media #{$sm} {
+                    inset-inline-end: 157px;
+                }
+
+                @media #{$xs} {
+                    inset-inline-end: 128px;
+                }
+
+                @include rtl {
+                    inset-inline-end: auto;
+                    inset-inline-start: 15px;
+                }
+            }
+            & p {
+                font-size: 14px;
+                line-height: 1.43;
+                color: #525258;
+                margin-bottom: 0;
+
+                & span {
+                    color: var(--tp-common-black) !important;
+                    font-weight: 500;
+                    margin-inline-start: 0;
+                }
+            }
+        }
+    }
+}

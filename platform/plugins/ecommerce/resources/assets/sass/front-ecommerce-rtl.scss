@@ -1,0 +1,62 @@
+@use 'ultils' as *;
+
+[dir='rtl'] {
+    .lg-outer {
+        direction: ltr;
+    }
+
+    .#{$prefix}product {
+        &-attribute-swatch {
+            &-list {
+                &.color-swatch {
+                    span {
+                        transform: translate(50%, -50%);
+                    }
+                }
+
+                &.visual-swatch {
+                    .#{$prefix}product-attribute-swatch-item {
+                        &:hover,
+                        &.active {
+                            span {
+                                transform: translate(50%, -50%) scale(0.8);
+                            }
+                        }
+                        &:hover {
+                            & .#{$prefix}product-attribute-swatch-item-tooltip {
+                                transform: translate(50%) translateY(-10px);
+
+                                &::before {
+                                    transform: translate(50%);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &-item {
+                &-tooltip {
+                    transform: translateX(50%) translateY(2px);
+                    &::before {
+                        transform: translateX(50%);
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 767px) {
+            &-gallery-thumbnails {
+                .slick-arrow {
+                    &.slick-prev {
+                        transform: rotate(180deg);
+                    }
+
+                    &.slick-next {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+    }
+}
