@@ -32,11 +32,10 @@ RUN docker-php-ext-install gd
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Clone the GitHub repository
-ARG GITHUB_REPO=https://github.com/yourusername/your-repo.git
-RUN git clone $GITHUB_REPO .
-
+RUN git clone https://github.com/opestro/cimyah.git .
+RUN cd cimyah
 # Change current user to www
-USER www-data
+
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000

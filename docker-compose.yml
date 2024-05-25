@@ -2,8 +2,9 @@ version: '3'
 services:
     app:
         image: ghcr.io/archielite/laravel:php8.1
+        build:
+          dockerfile: Dockerfile
         command: >
-           RUN git clone https://github.com/opestro/cimyah.git .
            sh -c "
            composer install &&
            php artisan key:generate &&
