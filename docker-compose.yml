@@ -2,6 +2,14 @@ version: '3'
 services:
     app:
         image: ghcr.io/archielite/laravel:php8.1
+        command: >
+          sh -c "
+          composer install &&
+          php artisan key:generate &&
+          php artisan migrate &&
+          php artisan cache:clear &&
+          php-fpm
+          "
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
