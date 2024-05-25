@@ -32,7 +32,7 @@ RUN docker-php-ext-install gd
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Clone the GitHub repository
-RUN git clone https://github.com/opestro/cimyah.git .
+RUN git clone https://github.com/opestro/cimyah.git
 RUN cd cimyah
 # Change current user to www
 
