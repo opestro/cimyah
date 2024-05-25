@@ -15,7 +15,7 @@ services:
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
-            - '80:80'
+            - '88:80'
         volumes:
             - '.:/var/www/html'
         networks:
@@ -27,7 +27,7 @@ services:
         container_name: nginx
         restart: unless-stopped
         ports:
-           - "8000:80"
+           - "8008:80"
         volumes:
            - .:/var/www
            - ./nginx/conf.d:/etc/nginx/conf.d
