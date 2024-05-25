@@ -33,6 +33,7 @@ services:
            - ./nginx/conf.d:/etc/nginx/conf.d
         depends_on:
            - app
+           - mysql
         networks:
            - sail
     mysql:
