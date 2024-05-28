@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     git \
+    curl \
+    wget \
     libonig-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -33,8 +35,15 @@ COPY . .
 # Install application dependencies
 RUN composer install --no-dev --optimize-autoloader
 
+# Ensure the artisan file exists
+RUN ls -la /var/www && php artisan --version
+
 # Expose port 8000
 EXPOSE 8000
+
+# Add a health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s \
+    CMD curl -f http://localhost:8000 || exit 1
 
 # Run Laravel's development server
 CMD php artisan serve --host=0.0.0.0 --port=8000
