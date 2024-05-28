@@ -2,7 +2,7 @@
 FROM php:8.1-cli
 
 # Set the working directory
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -30,13 +30,13 @@ RUN docker-php-ext-install -j$(nproc) pdo mbstring zip exif pcntl calendar
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Copy the application code
-COPY . .
+COPY html /var/www/html
 
 # Install application dependencies
 RUN composer install --no-dev --optimize-autoloader
 
 # Ensure the artisan file exists
-RUN ls -la /var/www && php artisan --version
+RUN ls -la /var/www/html && php artisan --version
 
 # Expose port 8000
 EXPOSE 8000
@@ -46,4 +46,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s \
     CMD curl -f http://localhost:8000 || exit 1
 
 # Run Laravel's development server
-CMD ls -la /var/www && php artisan serve --host=0.0.0.0 --port=8000
+CMD ls -la /var/www/html && php artisan serve --host=0.0.0.0 --port=8000
