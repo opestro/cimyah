@@ -1,0 +1,3629 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Your App Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var tryItOutBaseUrl = "http://shofy.test";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-4.35.0.js"></script>
+
+    <script src="../docs/js/theme-default-4.35.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image"/>
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                    <ul id="tocify-header-introduction" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="introduction">
+                    <a href="#introduction">Introduction</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-authenticating-requests" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authenticating-requests">
+                    <a href="#authenticating-requests">Authenticating requests</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-authentication" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authentication">
+                    <a href="#authentication">Authentication</a>
+                </li>
+                                    <ul id="tocify-subheader-authentication" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-register">
+                                <a href="#authentication-POSTapi-v1-register">Register</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-login">
+                                <a href="#authentication-POSTapi-v1-login">Login</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-password-forgot">
+                                <a href="#authentication-POSTapi-v1-password-forgot">Forgot password</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-resend-verify-account-email">
+                                <a href="#authentication-POSTapi-v1-resend-verify-account-email">Resend email verification</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-GETapi-v1-logout">
+                                <a href="#authentication-GETapi-v1-logout">Logout</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-blog" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="blog">
+                    <a href="#blog">Blog</a>
+                </li>
+                                    <ul id="tocify-subheader-blog" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="blog-GETapi-v1-search">
+                                <a href="#blog-GETapi-v1-search">Search post</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="blog-GETapi-v1-posts">
+                                <a href="#blog-GETapi-v1-posts">List posts</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="blog-GETapi-v1-categories">
+                                <a href="#blog-GETapi-v1-categories">List categories</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="blog-GETapi-v1-tags">
+                                <a href="#blog-GETapi-v1-tags">List tags</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="blog-GETapi-v1-posts-filters">
+                                <a href="#blog-GETapi-v1-posts-filters">Filters posts</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="blog-GETapi-v1-posts--slug-">
+                                <a href="#blog-GETapi-v1-posts--slug-">Get post by slug</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="blog-GETapi-v1-categories-filters">
+                                <a href="#blog-GETapi-v1-categories-filters">Filters categories</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="blog-GETapi-v1-categories--slug-">
+                                <a href="#blog-GETapi-v1-categories--slug-">Get category by slug</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-profile" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="profile">
+                    <a href="#profile">Profile</a>
+                </li>
+                                    <ul id="tocify-subheader-profile" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="profile-GETapi-v1-me">
+                                <a href="#profile-GETapi-v1-me">Get the user profile information.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="profile-PUTapi-v1-me">
+                                <a href="#profile-PUTapi-v1-me">Update profile</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="profile-POSTapi-v1-update-avatar">
+                                <a href="#profile-POSTapi-v1-update-avatar">Update Avatar</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="profile-PUTapi-v1-update-password">
+                                <a href="#profile-PUTapi-v1-update-password">Update password</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+            </div>
+
+    <ul class="toc-footer" id="toc-footer">
+                    <li style="padding-bottom: 5px;"><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li style="padding-bottom: 5px;"><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+    </ul>
+
+    <ul class="toc-footer" id="last-updated">
+        <li>Last updated: April 12, 2024</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<aside>
+    <strong>Base URL</strong>: <code>http://shofy.test</code>
+</aside>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="authentication">Authentication</h1>
+
+    
+
+                                <h2 id="authentication-POSTapi-v1-register">Register</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-register">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://shofy.test/api/v1/register" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"first_name\": \"repudiandae\",
+    \"last_name\": \"sed\",
+    \"email\": \"aiden.stanton@example.org\",
+    \"password\": \"xnGXQjmJ-iXP\",
+    \"phone\": \"provident\",
+    \"password_confirmation\": \"ab\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/register"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "repudiandae",
+    "last_name": "sed",
+    "email": "aiden.stanton@example.org",
+    "password": "xnGXQjmJ-iXP",
+    "phone": "provident",
+    "password_confirmation": "ab"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-register">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: false,
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Registered successfully! We emailed you to verify your account!&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;first_name&quot;: [
+            &quot;The first name field is required.&quot;
+        ],
+        &quot;last_name&quot;: [
+            &quot;The last name field is required.&quot;
+        ],
+        &quot;email&quot;: [
+            &quot;The email field is required.&quot;
+        ],
+        &quot;password&quot;: [
+            &quot;The password field is required.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-register" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-register"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-register"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-register" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-register">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-register" data-method="POST"
+      data-path="api/v1/register"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-register', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-register"
+                    onclick="tryItOut('POSTapi-v1-register');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-register"
+                    onclick="cancelTryOut('POSTapi-v1-register');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-register"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/register</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-register"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-register"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>first_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="first_name"                data-endpoint="POSTapi-v1-register"
+               value="repudiandae"
+               data-component="body">
+    <br>
+<p>The name of the user. Example: <code>repudiandae</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="last_name"                data-endpoint="POSTapi-v1-register"
+               value="sed"
+               data-component="body">
+    <br>
+<p>The name of the user. Example: <code>sed</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-v1-register"
+               value="aiden.stanton@example.org"
+               data-component="body">
+    <br>
+<p>The email of the user. Example: <code>aiden.stanton@example.org</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password"                data-endpoint="POSTapi-v1-register"
+               value="xnGXQjmJ-iXP"
+               data-component="body">
+    <br>
+<p>The password of user to create. Example: <code>xnGXQjmJ-iXP</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="phone"                data-endpoint="POSTapi-v1-register"
+               value="provident"
+               data-component="body">
+    <br>
+<p>The phone of the user. Example: <code>provident</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password_confirmation"                data-endpoint="POSTapi-v1-register"
+               value="ab"
+               data-component="body">
+    <br>
+<p>The password confirmation. Example: <code>ab</code></p>
+        </div>
+        </form>
+
+                    <h2 id="authentication-POSTapi-v1-login">Login</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://shofy.test/api/v1/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"e.g: abc@example.com\",
+    \"password\": \"9$g^}56|w$r&lt;j&gt;9&lt;q\",
+    \"login\": \"nulla\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "e.g: abc@example.com",
+    "password": "9$g^}56|w$r&lt;j&gt;9&lt;q",
+    "login": "nulla"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-login">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: false,
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;1|aF5s7p3xxx1lVL8hkSrPN72m4wPVpTvTs...&quot;
+    },
+    &quot;message&quot;: null
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-login"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-login">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-login" data-method="POST"
+      data-path="api/v1/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-login"
+                    onclick="tryItOut('POSTapi-v1-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-login"
+                    onclick="cancelTryOut('POSTapi-v1-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-login"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/login</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-v1-login"
+               value="e.g: abc@example.com"
+               data-component="body">
+    <br>
+<p>Must be a valid email address. Example: <code>e.g: abc@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password"                data-endpoint="POSTapi-v1-login"
+               value="9$g^}56|w$r<j>9<q"
+               data-component="body">
+    <br>
+<p>The password of user to create. Example: <code>9$g^}56|w$r&lt;j&gt;9&lt;q</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>login</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="login"                data-endpoint="POSTapi-v1-login"
+               value="nulla"
+               data-component="body">
+    <br>
+<p>The email/phone of the user. Example: <code>nulla</code></p>
+        </div>
+        </form>
+
+                    <h2 id="authentication-POSTapi-v1-password-forgot">Forgot password</h2>
+
+<p>
+</p>
+
+<p>Send a reset link to the given user.</p>
+
+<span id="example-requests-POSTapi-v1-password-forgot">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://shofy.test/api/v1/password/forgot" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"angelo94@example.net\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/password/forgot"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "angelo94@example.net"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-password-forgot">
+</span>
+<span id="execution-results-POSTapi-v1-password-forgot" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-password-forgot"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-password-forgot"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-password-forgot" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-password-forgot">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-password-forgot" data-method="POST"
+      data-path="api/v1/password/forgot"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-password-forgot', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-password-forgot"
+                    onclick="tryItOut('POSTapi-v1-password-forgot');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-password-forgot"
+                    onclick="cancelTryOut('POSTapi-v1-password-forgot');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-password-forgot"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/password/forgot</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-password-forgot"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-password-forgot"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-v1-password-forgot"
+               value="angelo94@example.net"
+               data-component="body">
+    <br>
+<p>The email of the user. Example: <code>angelo94@example.net</code></p>
+        </div>
+        </form>
+
+                    <h2 id="authentication-POSTapi-v1-resend-verify-account-email">Resend email verification</h2>
+
+<p>
+</p>
+
+<p>Resend the email verification notification.</p>
+
+<span id="example-requests-POSTapi-v1-resend-verify-account-email">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://shofy.test/api/v1/resend-verify-account-email" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"chadrick36@example.org\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/resend-verify-account-email"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "chadrick36@example.org"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-resend-verify-account-email">
+</span>
+<span id="execution-results-POSTapi-v1-resend-verify-account-email" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-resend-verify-account-email"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-resend-verify-account-email"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-resend-verify-account-email" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-resend-verify-account-email">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-resend-verify-account-email" data-method="POST"
+      data-path="api/v1/resend-verify-account-email"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-resend-verify-account-email', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-resend-verify-account-email"
+                    onclick="tryItOut('POSTapi-v1-resend-verify-account-email');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-resend-verify-account-email"
+                    onclick="cancelTryOut('POSTapi-v1-resend-verify-account-email');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-resend-verify-account-email"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/resend-verify-account-email</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-resend-verify-account-email"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-resend-verify-account-email"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-v1-resend-verify-account-email"
+               value="chadrick36@example.org"
+               data-component="body">
+    <br>
+<p>The email of the user. Example: <code>chadrick36@example.org</code></p>
+        </div>
+        </form>
+
+                    <h2 id="authentication-GETapi-v1-logout">Logout</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-logout">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://shofy.test/api/v1/logout" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/logout"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-logout">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: true,
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-logout" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-logout"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-logout"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-logout" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-logout">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-logout" data-method="GET"
+      data-path="api/v1/logout"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-logout', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-logout"
+                    onclick="tryItOut('GETapi-v1-logout');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-logout"
+                    onclick="cancelTryOut('GETapi-v1-logout');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-logout"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/logout</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-logout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-logout"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                <h1 id="blog">Blog</h1>
+
+    
+
+                                <h2 id="blog-GETapi-v1-search">Search post</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-search">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://shofy.test/api/v1/search" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"q\": \"veniam\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/search"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "q": "veniam"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-search">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 51
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: true,
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;No results found, please try with different keywords.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-search" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-search"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-search"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-search" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-search">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-search" data-method="GET"
+      data-path="api/v1/search"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-search', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-search"
+                    onclick="tryItOut('GETapi-v1-search');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-search"
+                    onclick="cancelTryOut('GETapi-v1-search');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-search"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/search</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-search"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-search"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>q</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="q"                data-endpoint="GETapi-v1-search"
+               value="veniam"
+               data-component="body">
+    <br>
+<p>The search keyword. Example: <code>veniam</code></p>
+        </div>
+        </form>
+
+                    <h2 id="blog-GETapi-v1-posts">List posts</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-posts">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://shofy.test/api/v1/posts" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/posts"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-posts">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 50
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;4 Expert Tips On How To Choose The Right Men&rsquo;s Wallet&quot;,
+            &quot;slug&quot;: &quot;4-expert-tips-on-how-to-choose-the-right-mens-wallet&quot;,
+            &quot;description&quot;: &quot;Alice, with a shiver. &#039;I beg your pardon,&#039; said Alice indignantly, and she hastily dried her eyes immediately met those of a muchness\&quot;--did you ever saw. How she longed to change the subject. &#039;Go on.&quot;,
+            &quot;image&quot;: &quot;http://shofy.test/storage/main/blog/post-7.jpg&quot;,
+            &quot;categories&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Fashion&quot;,
+                    &quot;slug&quot;: &quot;fashion&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/fashion&quot;,
+                    &quot;description&quot;: &quot;Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.&quot;
+                },
+                {
+                    &quot;id&quot;: 4,
+                    &quot;name&quot;: &quot;Commercial&quot;,
+                    &quot;slug&quot;: &quot;commercial&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/commercial&quot;,
+                    &quot;description&quot;: &quot;Quas in id sit. Dolorem provident minima modi dolor est.&quot;
+                }
+            ],
+            &quot;tags&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;General&quot;,
+                    &quot;slug&quot;: &quot;general&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Fashion&quot;,
+                    &quot;slug&quot;: &quot;fashion&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 8,
+                    &quot;name&quot;: &quot;Sunglasses&quot;,
+                    &quot;slug&quot;: &quot;sunglasses&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                }
+            ],
+            &quot;created_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Sexy Clutches: How to Buy &amp; Wear a Designer Clutch Bag&quot;,
+            &quot;slug&quot;: &quot;sexy-clutches-how-to-buy-wear-a-designer-clutch-bag&quot;,
+            &quot;description&quot;: &quot;Queen of Hearts, carrying the King&#039;s crown on a little timidly, for she felt that it was growing, and she jumped up and saying, &#039;Thank you, sir, for your walk!\&quot; \&quot;Coming in a minute or two, it was.&quot;,
+            &quot;image&quot;: &quot;http://shofy.test/storage/main/blog/post-9.jpg&quot;,
+            &quot;categories&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Fashion&quot;,
+                    &quot;slug&quot;: &quot;fashion&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/fashion&quot;,
+                    &quot;description&quot;: &quot;Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.&quot;
+                },
+                {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Organic Fruits&quot;,
+                    &quot;slug&quot;: &quot;organic-fruits&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/organic-fruits&quot;,
+                    &quot;description&quot;: &quot;Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.&quot;
+                }
+            ],
+            &quot;tags&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Design&quot;,
+                    &quot;slug&quot;: &quot;design&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 6,
+                    &quot;name&quot;: &quot;Nature&quot;,
+                    &quot;slug&quot;: &quot;nature&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                }
+            ],
+            &quot;created_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;The Top 2020 Handbag Trends to Know&quot;,
+            &quot;slug&quot;: &quot;the-top-2020-handbag-trends-to-know&quot;,
+            &quot;description&quot;: &quot;Queen. &#039;Well, I shan&#039;t go, at any rate he might answer questions.--How am I to get rather sleepy, and went by without noticing her. Then followed the Knave &#039;Turn them over!&#039; The Knave did so, very.&quot;,
+            &quot;image&quot;: &quot;http://shofy.test/storage/main/blog/post-4.jpg&quot;,
+            &quot;categories&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Fashion&quot;,
+                    &quot;slug&quot;: &quot;fashion&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/fashion&quot;,
+                    &quot;description&quot;: &quot;Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.&quot;
+                },
+                {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Organic Fruits&quot;,
+                    &quot;slug&quot;: &quot;organic-fruits&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/organic-fruits&quot;,
+                    &quot;description&quot;: &quot;Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.&quot;
+                }
+            ],
+            &quot;tags&quot;: [
+                {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Modern&quot;,
+                    &quot;slug&quot;: &quot;modern&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 7,
+                    &quot;name&quot;: &quot;Vintage&quot;,
+                    &quot;slug&quot;: &quot;vintage&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                }
+            ],
+            &quot;created_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;How to Match the Color of Your Handbag With an Outfit&quot;,
+            &quot;slug&quot;: &quot;how-to-match-the-color-of-your-handbag-with-an-outfit&quot;,
+            &quot;description&quot;: &quot;I to do?&#039; said Alice. The King looked anxiously round, to make out which were the two sides of it, and on both sides at once. The Dormouse had closed its eyes again, to see what I was a good deal.&quot;,
+            &quot;image&quot;: &quot;http://shofy.test/storage/main/blog/post-3.jpg&quot;,
+            &quot;categories&quot;: [
+                {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Electronic&quot;,
+                    &quot;slug&quot;: &quot;electronic&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/electronic&quot;,
+                    &quot;description&quot;: &quot;Quis qui aspernatur in quia hic eum. Est molestias assumenda nam iusto optio voluptatem et. Repudiandae dolores quibusdam ut adipisci. Molestiae sequi reprehenderit mollitia cum non.&quot;
+                },
+                {
+                    &quot;id&quot;: 4,
+                    &quot;name&quot;: &quot;Commercial&quot;,
+                    &quot;slug&quot;: &quot;commercial&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/commercial&quot;,
+                    &quot;description&quot;: &quot;Quas in id sit. Dolorem provident minima modi dolor est.&quot;
+                }
+            ],
+            &quot;tags&quot;: [
+                {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Fashion&quot;,
+                    &quot;slug&quot;: &quot;fashion&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 7,
+                    &quot;name&quot;: &quot;Vintage&quot;,
+                    &quot;slug&quot;: &quot;vintage&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 8,
+                    &quot;name&quot;: &quot;Sunglasses&quot;,
+                    &quot;slug&quot;: &quot;sunglasses&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                }
+            ],
+            &quot;created_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;How to Care for Leather Bags&quot;,
+            &quot;slug&quot;: &quot;how-to-care-for-leather-bags&quot;,
+            &quot;description&quot;: &quot;Quick, now!&#039; And Alice was just going to begin with; and being so many lessons to learn! No, I&#039;ve made up my mind about it; and while she remembered trying to make out what it was: at first was in.&quot;,
+            &quot;image&quot;: &quot;http://shofy.test/storage/main/blog/post-7.jpg&quot;,
+            &quot;categories&quot;: [
+                {
+                    &quot;id&quot;: 4,
+                    &quot;name&quot;: &quot;Commercial&quot;,
+                    &quot;slug&quot;: &quot;commercial&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/commercial&quot;,
+                    &quot;description&quot;: &quot;Quas in id sit. Dolorem provident minima modi dolor est.&quot;
+                },
+                {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Organic Fruits&quot;,
+                    &quot;slug&quot;: &quot;organic-fruits&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/organic-fruits&quot;,
+                    &quot;description&quot;: &quot;Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.&quot;
+                }
+            ],
+            &quot;tags&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Design&quot;,
+                    &quot;slug&quot;: &quot;design&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Modern&quot;,
+                    &quot;slug&quot;: &quot;modern&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 6,
+                    &quot;name&quot;: &quot;Nature&quot;,
+                    &quot;slug&quot;: &quot;nature&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                }
+            ],
+            &quot;created_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;name&quot;: &quot;We&#039;re Crushing Hard on Summer&#039;s 10 Biggest Bag Trends&quot;,
+            &quot;slug&quot;: &quot;were-crushing-hard-on-summers-10-biggest-bag-trends&quot;,
+            &quot;description&quot;: &quot;Alice whispered, &#039;that it&#039;s done by everybody minding their own business!&#039; &#039;Ah, well! It means much the same thing with you,&#039; said Alice, seriously, &#039;I&#039;ll have nothing more to do with you. Mind.&quot;,
+            &quot;image&quot;: &quot;http://shofy.test/storage/main/blog/post-9.jpg&quot;,
+            &quot;categories&quot;: [
+                {
+                    &quot;id&quot;: 6,
+                    &quot;name&quot;: &quot;Ecological&quot;,
+                    &quot;slug&quot;: &quot;ecological&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/ecological&quot;,
+                    &quot;description&quot;: &quot;Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.&quot;
+                }
+            ],
+            &quot;tags&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Design&quot;,
+                    &quot;slug&quot;: &quot;design&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 7,
+                    &quot;name&quot;: &quot;Vintage&quot;,
+                    &quot;slug&quot;: &quot;vintage&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                }
+            ],
+            &quot;created_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;name&quot;: &quot;Essential Qualities of Highly Successful Music&quot;,
+            &quot;slug&quot;: &quot;essential-qualities-of-highly-successful-music&quot;,
+            &quot;description&quot;: &quot;Queen, who had been for some time without hearing anything more: at last it unfolded its arms, took the hookah into its eyes by this time?&#039; she said to herself how this same little sister of hers.&quot;,
+            &quot;image&quot;: &quot;http://shofy.test/storage/main/blog/post-7.jpg&quot;,
+            &quot;categories&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;Crisp Bread &amp; Cake&quot;,
+                    &quot;slug&quot;: &quot;crisp-bread-cake&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/crisp-bread-cake&quot;,
+                    &quot;description&quot;: &quot;Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.&quot;
+                },
+                {
+                    &quot;id&quot;: 6,
+                    &quot;name&quot;: &quot;Ecological&quot;,
+                    &quot;slug&quot;: &quot;ecological&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/ecological&quot;,
+                    &quot;description&quot;: &quot;Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.&quot;
+                }
+            ],
+            &quot;tags&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;General&quot;,
+                    &quot;slug&quot;: &quot;general&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 7,
+                    &quot;name&quot;: &quot;Vintage&quot;,
+                    &quot;slug&quot;: &quot;vintage&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 8,
+                    &quot;name&quot;: &quot;Sunglasses&quot;,
+                    &quot;slug&quot;: &quot;sunglasses&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                }
+            ],
+            &quot;created_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;name&quot;: &quot;9 Things I Love About Shaving My Head&quot;,
+            &quot;slug&quot;: &quot;9-things-i-love-about-shaving-my-head&quot;,
+            &quot;description&quot;: &quot;Said the mouse doesn&#039;t get out.\&quot; Only I don&#039;t know,&#039; he went on so long since she had wept when she got up this morning, but I shall have somebody to talk to.&#039; &#039;How are you thinking of?&#039; &#039;I beg your.&quot;,
+            &quot;image&quot;: &quot;http://shofy.test/storage/main/blog/post-7.jpg&quot;,
+            &quot;categories&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;Crisp Bread &amp; Cake&quot;,
+                    &quot;slug&quot;: &quot;crisp-bread-cake&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/crisp-bread-cake&quot;,
+                    &quot;description&quot;: &quot;Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.&quot;
+                },
+                {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Organic Fruits&quot;,
+                    &quot;slug&quot;: &quot;organic-fruits&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/organic-fruits&quot;,
+                    &quot;description&quot;: &quot;Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.&quot;
+                }
+            ],
+            &quot;tags&quot;: [
+                {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Modern&quot;,
+                    &quot;slug&quot;: &quot;modern&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 6,
+                    &quot;name&quot;: &quot;Nature&quot;,
+                    &quot;slug&quot;: &quot;nature&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                }
+            ],
+            &quot;created_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 9,
+            &quot;name&quot;: &quot;Why Teamwork Really Makes The Dream Work&quot;,
+            &quot;slug&quot;: &quot;why-teamwork-really-makes-the-dream-work&quot;,
+            &quot;description&quot;: &quot;Cat&#039;s head began fading away the moment he was in confusion, getting the Dormouse said--&#039; the Hatter went on, &#039;\&quot;--found it advisable to go on crying in this way! Stop this moment, and fetch me a.&quot;,
+            &quot;image&quot;: &quot;http://shofy.test/storage/main/blog/post-1.jpg&quot;,
+            &quot;categories&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;Crisp Bread &amp; Cake&quot;,
+                    &quot;slug&quot;: &quot;crisp-bread-cake&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/crisp-bread-cake&quot;,
+                    &quot;description&quot;: &quot;Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.&quot;
+                },
+                {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Organic Fruits&quot;,
+                    &quot;slug&quot;: &quot;organic-fruits&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/organic-fruits&quot;,
+                    &quot;description&quot;: &quot;Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.&quot;
+                }
+            ],
+            &quot;tags&quot;: [
+                {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Fashion&quot;,
+                    &quot;slug&quot;: &quot;fashion&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Modern&quot;,
+                    &quot;slug&quot;: &quot;modern&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 6,
+                    &quot;name&quot;: &quot;Nature&quot;,
+                    &quot;slug&quot;: &quot;nature&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                }
+            ],
+            &quot;created_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 10,
+            &quot;name&quot;: &quot;The World Caters to Average People&quot;,
+            &quot;slug&quot;: &quot;the-world-caters-to-average-people&quot;,
+            &quot;description&quot;: &quot;Alice, every now and then raised himself upon tiptoe, put his mouth close to her: its face to see what the flame of a tree. By the use of this rope--Will the roof bear?--Mind that loose slate--Oh.&quot;,
+            &quot;image&quot;: &quot;http://shofy.test/storage/main/blog/post-10.jpg&quot;,
+            &quot;categories&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Fashion&quot;,
+                    &quot;slug&quot;: &quot;fashion&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/fashion&quot;,
+                    &quot;description&quot;: &quot;Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.&quot;
+                },
+                {
+                    &quot;id&quot;: 4,
+                    &quot;name&quot;: &quot;Commercial&quot;,
+                    &quot;slug&quot;: &quot;commercial&quot;,
+                    &quot;url&quot;: &quot;http://shofy.test/blog/commercial&quot;,
+                    &quot;description&quot;: &quot;Quas in id sit. Dolorem provident minima modi dolor est.&quot;
+                }
+            ],
+            &quot;tags&quot;: [
+                {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Design&quot;,
+                    &quot;slug&quot;: &quot;design&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Fashion&quot;,
+                    &quot;slug&quot;: &quot;fashion&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                },
+                {
+                    &quot;id&quot;: 6,
+                    &quot;name&quot;: &quot;Nature&quot;,
+                    &quot;slug&quot;: &quot;nature&quot;,
+                    &quot;description&quot;: &quot;&quot;
+                }
+            ],
+            &quot;created_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2024-04-11T08:14:30.000000Z&quot;
+        }
+    ],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://shofy.test/api/v1/posts?page=1&quot;,
+        &quot;last&quot;: &quot;http://shofy.test/api/v1/posts?page=2&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: &quot;http://shofy.test/api/v1/posts?page=2&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 2,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://shofy.test/api/v1/posts?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: &quot;http://shofy.test/api/v1/posts?page=2&quot;,
+                &quot;label&quot;: &quot;2&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://shofy.test/api/v1/posts?page=2&quot;,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;path&quot;: &quot;http://shofy.test/api/v1/posts&quot;,
+        &quot;per_page&quot;: 10,
+        &quot;to&quot;: 10,
+        &quot;total&quot;: 18
+    },
+    &quot;error&quot;: false,
+    &quot;message&quot;: null
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-posts" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-posts"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-posts"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-posts" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-posts">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-posts" data-method="GET"
+      data-path="api/v1/posts"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-posts', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-posts"
+                    onclick="tryItOut('GETapi-v1-posts');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-posts"
+                    onclick="cancelTryOut('GETapi-v1-posts');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-posts"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/posts</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-posts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-posts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="blog-GETapi-v1-categories">List categories</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-categories">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://shofy.test/api/v1/categories" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/categories"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-categories">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 49
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 6,
+            &quot;name&quot;: &quot;Ecological&quot;,
+            &quot;slug&quot;: &quot;ecological&quot;,
+            &quot;description&quot;: &quot;Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.&quot;,
+            &quot;children&quot;: [],
+            &quot;parent&quot;: {
+                &quot;id&quot;: null,
+                &quot;name&quot;: &quot;&quot;,
+                &quot;slug&quot;: &quot;&quot;,
+                &quot;url&quot;: &quot;http://shofy.test&quot;,
+                &quot;description&quot;: &quot;&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;Organic Fruits&quot;,
+            &quot;slug&quot;: &quot;organic-fruits&quot;,
+            &quot;description&quot;: &quot;Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.&quot;,
+            &quot;children&quot;: [],
+            &quot;parent&quot;: {
+                &quot;id&quot;: null,
+                &quot;name&quot;: &quot;&quot;,
+                &quot;slug&quot;: &quot;&quot;,
+                &quot;url&quot;: &quot;http://shofy.test&quot;,
+                &quot;description&quot;: &quot;&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;Commercial&quot;,
+            &quot;slug&quot;: &quot;commercial&quot;,
+            &quot;description&quot;: &quot;Quas in id sit. Dolorem provident minima modi dolor est.&quot;,
+            &quot;children&quot;: [],
+            &quot;parent&quot;: {
+                &quot;id&quot;: null,
+                &quot;name&quot;: &quot;&quot;,
+                &quot;slug&quot;: &quot;&quot;,
+                &quot;url&quot;: &quot;http://shofy.test&quot;,
+                &quot;description&quot;: &quot;&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Electronic&quot;,
+            &quot;slug&quot;: &quot;electronic&quot;,
+            &quot;description&quot;: &quot;Quis qui aspernatur in quia hic eum. Est molestias assumenda nam iusto optio voluptatem et. Repudiandae dolores quibusdam ut adipisci. Molestiae sequi reprehenderit mollitia cum non.&quot;,
+            &quot;children&quot;: [],
+            &quot;parent&quot;: {
+                &quot;id&quot;: null,
+                &quot;name&quot;: &quot;&quot;,
+                &quot;slug&quot;: &quot;&quot;,
+                &quot;url&quot;: &quot;http://shofy.test&quot;,
+                &quot;description&quot;: &quot;&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Fashion&quot;,
+            &quot;slug&quot;: &quot;fashion&quot;,
+            &quot;description&quot;: &quot;Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.&quot;,
+            &quot;children&quot;: [],
+            &quot;parent&quot;: {
+                &quot;id&quot;: null,
+                &quot;name&quot;: &quot;&quot;,
+                &quot;slug&quot;: &quot;&quot;,
+                &quot;url&quot;: &quot;http://shofy.test&quot;,
+                &quot;description&quot;: &quot;&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Crisp Bread &amp; Cake&quot;,
+            &quot;slug&quot;: &quot;crisp-bread-cake&quot;,
+            &quot;description&quot;: &quot;Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.&quot;,
+            &quot;children&quot;: [],
+            &quot;parent&quot;: {
+                &quot;id&quot;: null,
+                &quot;name&quot;: &quot;&quot;,
+                &quot;slug&quot;: &quot;&quot;,
+                &quot;url&quot;: &quot;http://shofy.test&quot;,
+                &quot;description&quot;: &quot;&quot;
+            }
+        }
+    ],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://shofy.test/api/v1/categories?page=1&quot;,
+        &quot;last&quot;: &quot;http://shofy.test/api/v1/categories?page=1&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: null
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://shofy.test/api/v1/categories?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;path&quot;: &quot;http://shofy.test/api/v1/categories&quot;,
+        &quot;per_page&quot;: 10,
+        &quot;to&quot;: 6,
+        &quot;total&quot;: 6
+    },
+    &quot;error&quot;: false,
+    &quot;message&quot;: null
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-categories" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-categories"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-categories"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-categories" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-categories">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-categories" data-method="GET"
+      data-path="api/v1/categories"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-categories', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-categories"
+                    onclick="tryItOut('GETapi-v1-categories');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-categories"
+                    onclick="cancelTryOut('GETapi-v1-categories');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-categories"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/categories</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-categories"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-categories"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="blog-GETapi-v1-tags">List tags</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-tags">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://shofy.test/api/v1/tags" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/tags"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-tags">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 48
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;General&quot;,
+            &quot;slug&quot;: &quot;general&quot;,
+            &quot;description&quot;: &quot;&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Design&quot;,
+            &quot;slug&quot;: &quot;design&quot;,
+            &quot;description&quot;: &quot;&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Fashion&quot;,
+            &quot;slug&quot;: &quot;fashion&quot;,
+            &quot;description&quot;: &quot;&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;Branding&quot;,
+            &quot;slug&quot;: &quot;branding&quot;,
+            &quot;description&quot;: &quot;&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;Modern&quot;,
+            &quot;slug&quot;: &quot;modern&quot;,
+            &quot;description&quot;: &quot;&quot;
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;name&quot;: &quot;Nature&quot;,
+            &quot;slug&quot;: &quot;nature&quot;,
+            &quot;description&quot;: &quot;&quot;
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;name&quot;: &quot;Vintage&quot;,
+            &quot;slug&quot;: &quot;vintage&quot;,
+            &quot;description&quot;: &quot;&quot;
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;name&quot;: &quot;Sunglasses&quot;,
+            &quot;slug&quot;: &quot;sunglasses&quot;,
+            &quot;description&quot;: &quot;&quot;
+        }
+    ],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://shofy.test/api/v1/tags?page=1&quot;,
+        &quot;last&quot;: &quot;http://shofy.test/api/v1/tags?page=1&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: null
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://shofy.test/api/v1/tags?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;path&quot;: &quot;http://shofy.test/api/v1/tags&quot;,
+        &quot;per_page&quot;: 10,
+        &quot;to&quot;: 8,
+        &quot;total&quot;: 8
+    },
+    &quot;error&quot;: false,
+    &quot;message&quot;: null
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-tags" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-tags"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-tags"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-tags" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-tags">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-tags" data-method="GET"
+      data-path="api/v1/tags"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-tags', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-tags"
+                    onclick="tryItOut('GETapi-v1-tags');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-tags"
+                    onclick="cancelTryOut('GETapi-v1-tags');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-tags"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/tags</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-tags"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-tags"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="blog-GETapi-v1-posts-filters">Filters posts</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-posts-filters">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://shofy.test/api/v1/posts/filters?page=15&amp;per_page=17&amp;search=laboriosam&amp;after=rerum&amp;author=aut&amp;author_exclude=quo&amp;before=soluta&amp;exclude=minima&amp;include=vero&amp;order=magnam&amp;order_by=aliquam&amp;categories=non&amp;categories_exclude=aperiam&amp;tags=ut&amp;tags_exclude=odit&amp;featured=fuga" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/posts/filters"
+);
+
+const params = {
+    "page": "15",
+    "per_page": "17",
+    "search": "laboriosam",
+    "after": "rerum",
+    "author": "aut",
+    "author_exclude": "quo",
+    "before": "soluta",
+    "exclude": "minima",
+    "include": "vero",
+    "order": "magnam",
+    "order_by": "aliquam",
+    "categories": "non",
+    "categories_exclude": "aperiam",
+    "tags": "ut",
+    "tags_exclude": "odit",
+    "featured": "fuga",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-posts-filters">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 47
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://shofy.test/api/v1/posts/filters?page=1&quot;,
+        &quot;last&quot;: &quot;http://shofy.test/api/v1/posts/filters?page=1&quot;,
+        &quot;prev&quot;: &quot;http://shofy.test/api/v1/posts/filters?page=14&quot;,
+        &quot;next&quot;: null
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 15,
+        &quot;from&quot;: null,
+        &quot;last_page&quot;: 1,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: &quot;http://shofy.test/api/v1/posts/filters?page=14&quot;,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://shofy.test/api/v1/posts/filters?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;path&quot;: &quot;http://shofy.test/api/v1/posts/filters&quot;,
+        &quot;per_page&quot;: 17,
+        &quot;to&quot;: null,
+        &quot;total&quot;: 0
+    },
+    &quot;error&quot;: false,
+    &quot;message&quot;: null
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-posts-filters" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-posts-filters"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-posts-filters"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-posts-filters" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-posts-filters">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-posts-filters" data-method="GET"
+      data-path="api/v1/posts/filters"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-posts-filters', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-posts-filters"
+                    onclick="tryItOut('GETapi-v1-posts-filters');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-posts-filters"
+                    onclick="cancelTryOut('GETapi-v1-posts-filters');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-posts-filters"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/posts/filters</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-posts-filters"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-posts-filters"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-v1-posts-filters"
+               value="15"
+               data-component="query">
+    <br>
+<p>Current page of the collection. Default: 1 Example: <code>15</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-v1-posts-filters"
+               value="17"
+               data-component="query">
+    <br>
+<p>Maximum number of items to be returned in result set.Default: 10 Example: <code>17</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-v1-posts-filters"
+               value="laboriosam"
+               data-component="query">
+    <br>
+<p>Limit results to those matching a string. Example: <code>laboriosam</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>after</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="after"                data-endpoint="GETapi-v1-posts-filters"
+               value="rerum"
+               data-component="query">
+    <br>
+<p>Limit response to posts published after a given ISO8601 compliant date. Example: <code>rerum</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>author</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="author"                data-endpoint="GETapi-v1-posts-filters"
+               value="aut"
+               data-component="query">
+    <br>
+<p>Limit result set to posts assigned to specific authors. Example: <code>aut</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>author_exclude</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="author_exclude"                data-endpoint="GETapi-v1-posts-filters"
+               value="quo"
+               data-component="query">
+    <br>
+<p>Ensure result set excludes posts assigned to specific authors. Example: <code>quo</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>before</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="before"                data-endpoint="GETapi-v1-posts-filters"
+               value="soluta"
+               data-component="query">
+    <br>
+<p>Limit response to posts published before a given ISO8601 compliant date. Example: <code>soluta</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>exclude</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="exclude"                data-endpoint="GETapi-v1-posts-filters"
+               value="minima"
+               data-component="query">
+    <br>
+<p>Ensure result set excludes specific IDs. Example: <code>minima</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>include</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="include"                data-endpoint="GETapi-v1-posts-filters"
+               value="vero"
+               data-component="query">
+    <br>
+<p>Limit result set to specific IDs. Example: <code>vero</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>order</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="order"                data-endpoint="GETapi-v1-posts-filters"
+               value="magnam"
+               data-component="query">
+    <br>
+<p>Order sort attribute ascending or descending. Default: desc .One of: asc, desc Example: <code>magnam</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>order_by</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="order_by"                data-endpoint="GETapi-v1-posts-filters"
+               value="aliquam"
+               data-component="query">
+    <br>
+<p>Sort collection by object attribute. Default: updated_at. One of: author, created_at, updated_at, id,  slug, title Example: <code>aliquam</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>categories</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="categories"                data-endpoint="GETapi-v1-posts-filters"
+               value="non"
+               data-component="query">
+    <br>
+<p>Limit result set to all items that have the specified term assigned in the categories taxonomy. Example: <code>non</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>categories_exclude</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="categories_exclude"                data-endpoint="GETapi-v1-posts-filters"
+               value="aperiam"
+               data-component="query">
+    <br>
+<p>Limit result set to all items except those that have the specified term assigned in the categories taxonomy. Example: <code>aperiam</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>tags</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="tags"                data-endpoint="GETapi-v1-posts-filters"
+               value="ut"
+               data-component="query">
+    <br>
+<p>Limit result set to all items that have the specified term assigned in the tags taxonomy. Example: <code>ut</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>tags_exclude</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="tags_exclude"                data-endpoint="GETapi-v1-posts-filters"
+               value="odit"
+               data-component="query">
+    <br>
+<p>Limit result set to all items except those that have the specified term assigned in the tags taxonomy. Example: <code>odit</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>featured</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="featured"                data-endpoint="GETapi-v1-posts-filters"
+               value="fuga"
+               data-component="query">
+    <br>
+<p>Limit result set to items that are sticky. Example: <code>fuga</code></p>
+            </div>
+                </form>
+
+                    <h2 id="blog-GETapi-v1-posts--slug-">Get post by slug</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-posts--slug-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://shofy.test/api/v1/posts/voluptatem?slug=dicta" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/posts/voluptatem"
+);
+
+const params = {
+    "slug": "dicta",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-posts--slug-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 46
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: true,
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-posts--slug-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-posts--slug-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-posts--slug-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-posts--slug-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-posts--slug-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-posts--slug-" data-method="GET"
+      data-path="api/v1/posts/{slug}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-posts--slug-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-posts--slug-"
+                    onclick="tryItOut('GETapi-v1-posts--slug-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-posts--slug-"
+                    onclick="cancelTryOut('GETapi-v1-posts--slug-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-posts--slug-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/posts/{slug}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-posts--slug-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-posts--slug-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="slug"                data-endpoint="GETapi-v1-posts--slug-"
+               value="voluptatem"
+               data-component="url">
+    <br>
+<p>The slug of the post. Example: <code>voluptatem</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="slug"                data-endpoint="GETapi-v1-posts--slug-"
+               value="dicta"
+               data-component="query">
+    <br>
+<p>Find by slug of post. Example: <code>dicta</code></p>
+            </div>
+                </form>
+
+                    <h2 id="blog-GETapi-v1-categories-filters">Filters categories</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-categories-filters">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://shofy.test/api/v1/categories/filters" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/categories/filters"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-categories-filters">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 45
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;Organic Fruits&quot;,
+            &quot;slug&quot;: &quot;organic-fruits&quot;,
+            &quot;url&quot;: &quot;http://shofy.test/blog/organic-fruits&quot;,
+            &quot;description&quot;: &quot;Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;Fashion&quot;,
+            &quot;slug&quot;: &quot;fashion&quot;,
+            &quot;url&quot;: &quot;http://shofy.test/blog/fashion&quot;,
+            &quot;description&quot;: &quot;Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;Electronic&quot;,
+            &quot;slug&quot;: &quot;electronic&quot;,
+            &quot;url&quot;: &quot;http://shofy.test/blog/electronic&quot;,
+            &quot;description&quot;: &quot;Quis qui aspernatur in quia hic eum. Est molestias assumenda nam iusto optio voluptatem et. Repudiandae dolores quibusdam ut adipisci. Molestiae sequi reprehenderit mollitia cum non.&quot;
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;name&quot;: &quot;Ecological&quot;,
+            &quot;slug&quot;: &quot;ecological&quot;,
+            &quot;url&quot;: &quot;http://shofy.test/blog/ecological&quot;,
+            &quot;description&quot;: &quot;Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.&quot;
+        },
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Crisp Bread &amp; Cake&quot;,
+            &quot;slug&quot;: &quot;crisp-bread-cake&quot;,
+            &quot;url&quot;: &quot;http://shofy.test/blog/crisp-bread-cake&quot;,
+            &quot;description&quot;: &quot;Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;name&quot;: &quot;Commercial&quot;,
+            &quot;slug&quot;: &quot;commercial&quot;,
+            &quot;url&quot;: &quot;http://shofy.test/blog/commercial&quot;,
+            &quot;description&quot;: &quot;Quas in id sit. Dolorem provident minima modi dolor est.&quot;
+        }
+    ],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://shofy.test/api/v1/categories/filters?page=1&quot;,
+        &quot;last&quot;: &quot;http://shofy.test/api/v1/categories/filters?page=1&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: null
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;links&quot;: [
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://shofy.test/api/v1/categories/filters?page=1&quot;,
+                &quot;label&quot;: &quot;1&quot;,
+                &quot;active&quot;: true
+            },
+            {
+                &quot;url&quot;: null,
+                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
+                &quot;active&quot;: false
+            }
+        ],
+        &quot;path&quot;: &quot;http://shofy.test/api/v1/categories/filters&quot;,
+        &quot;per_page&quot;: 10,
+        &quot;to&quot;: 6,
+        &quot;total&quot;: 6
+    },
+    &quot;error&quot;: false,
+    &quot;message&quot;: null
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-categories-filters" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-categories-filters"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-categories-filters"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-categories-filters" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-categories-filters">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-categories-filters" data-method="GET"
+      data-path="api/v1/categories/filters"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-categories-filters', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-categories-filters"
+                    onclick="tryItOut('GETapi-v1-categories-filters');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-categories-filters"
+                    onclick="cancelTryOut('GETapi-v1-categories-filters');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-categories-filters"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/categories/filters</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-categories-filters"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-categories-filters"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="blog-GETapi-v1-categories--slug-">Get category by slug</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-categories--slug-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://shofy.test/api/v1/categories/reiciendis?slug=nesciunt" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/categories/reiciendis"
+);
+
+const params = {
+    "slug": "nesciunt",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-categories--slug-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 44
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: true,
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-categories--slug-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-categories--slug-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-categories--slug-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-categories--slug-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-categories--slug-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-categories--slug-" data-method="GET"
+      data-path="api/v1/categories/{slug}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-categories--slug-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-categories--slug-"
+                    onclick="tryItOut('GETapi-v1-categories--slug-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-categories--slug-"
+                    onclick="cancelTryOut('GETapi-v1-categories--slug-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-categories--slug-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/categories/{slug}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-categories--slug-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-categories--slug-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="slug"                data-endpoint="GETapi-v1-categories--slug-"
+               value="reiciendis"
+               data-component="url">
+    <br>
+<p>The slug of the category. Example: <code>reiciendis</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="slug"                data-endpoint="GETapi-v1-categories--slug-"
+               value="nesciunt"
+               data-component="query">
+    <br>
+<p>Find by slug of category. Example: <code>nesciunt</code></p>
+            </div>
+                </form>
+
+                <h1 id="profile">Profile</h1>
+
+    
+
+                                <h2 id="profile-GETapi-v1-me">Get the user profile information.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-me">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://shofy.test/api/v1/me" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/me"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-me">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;error&quot;: true,
+    &quot;data&quot;: null,
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-me" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-me"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-me"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-me" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-me">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-me" data-method="GET"
+      data-path="api/v1/me"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-me', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-me"
+                    onclick="tryItOut('GETapi-v1-me');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-me"
+                    onclick="cancelTryOut('GETapi-v1-me');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-me"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/me</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-me"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-me"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="profile-PUTapi-v1-me">Update profile</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PUTapi-v1-me">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://shofy.test/api/v1/me" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"first_name\": \"et\",
+    \"last_name\": \"delectus\",
+    \"phone\": \"ad\",
+    \"dob\": \"facere\",
+    \"gender\": \"at\",
+    \"description\": \"Expedita eveniet aliquam ducimus ab itaque.\",
+    \"email\": \"willms.asia@example.net\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/me"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "et",
+    "last_name": "delectus",
+    "phone": "ad",
+    "dob": "facere",
+    "gender": "at",
+    "description": "Expedita eveniet aliquam ducimus ab itaque.",
+    "email": "willms.asia@example.net"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-v1-me">
+</span>
+<span id="execution-results-PUTapi-v1-me" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-v1-me"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-v1-me"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-v1-me" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-v1-me">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-v1-me" data-method="PUT"
+      data-path="api/v1/me"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-v1-me', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-v1-me"
+                    onclick="tryItOut('PUTapi-v1-me');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-v1-me"
+                    onclick="cancelTryOut('PUTapi-v1-me');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-v1-me"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/v1/me</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-v1-me"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-v1-me"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>first_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="first_name"                data-endpoint="PUTapi-v1-me"
+               value="et"
+               data-component="body">
+    <br>
+<p>First name. Example: <code>et</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="last_name"                data-endpoint="PUTapi-v1-me"
+               value="delectus"
+               data-component="body">
+    <br>
+<p>Last name. Example: <code>delectus</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="phone"                data-endpoint="PUTapi-v1-me"
+               value="ad"
+               data-component="body">
+    <br>
+<p>Phone. Example: <code>ad</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>dob</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="dob"                data-endpoint="PUTapi-v1-me"
+               value="facere"
+               data-component="body">
+    <br>
+<p>Date of birth. Example: <code>facere</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="gender"                data-endpoint="PUTapi-v1-me"
+               value="at"
+               data-component="body">
+    <br>
+<p>Gender Example: <code>at</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PUTapi-v1-me"
+               value="Expedita eveniet aliquam ducimus ab itaque."
+               data-component="body">
+    <br>
+<p>Description Example: <code>Expedita eveniet aliquam ducimus ab itaque.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="PUTapi-v1-me"
+               value="willms.asia@example.net"
+               data-component="body">
+    <br>
+<p>Email. Example: <code>willms.asia@example.net</code></p>
+        </div>
+        </form>
+
+                    <h2 id="profile-POSTapi-v1-update-avatar">Update Avatar</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-update-avatar">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://shofy.test/api/v1/update/avatar" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "avatar=@/private/var/folders/h4/7j56n3vs11179mptv1t37ld40000gn/T/phpha67zy" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/update/avatar"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('avatar', document.querySelector('input[name="avatar"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-update-avatar">
+</span>
+<span id="execution-results-POSTapi-v1-update-avatar" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-update-avatar"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-update-avatar"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-update-avatar" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-update-avatar">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-update-avatar" data-method="POST"
+      data-path="api/v1/update/avatar"
+      data-authed="1"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-update-avatar', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-update-avatar"
+                    onclick="tryItOut('POSTapi-v1-update-avatar');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-update-avatar"
+                    onclick="cancelTryOut('POSTapi-v1-update-avatar');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-update-avatar"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/update/avatar</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-update-avatar"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-update-avatar"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>avatar</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+ &nbsp;
+                <input type="file" style="display: none"
+                              name="avatar"                data-endpoint="POSTapi-v1-update-avatar"
+               value=""
+               data-component="body">
+    <br>
+<p>Avatar file. Example: <code>/private/var/folders/h4/7j56n3vs11179mptv1t37ld40000gn/T/phpha67zy</code></p>
+        </div>
+        </form>
+
+                    <h2 id="profile-PUTapi-v1-update-password">Update password</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PUTapi-v1-update-password">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://shofy.test/api/v1/update/password" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"password\": \"\\\\$IfQ]*C[Gj\\\"\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://shofy.test/api/v1/update/password"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "password": "\\$IfQ]*C[Gj\""
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-v1-update-password">
+</span>
+<span id="execution-results-PUTapi-v1-update-password" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-v1-update-password"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-v1-update-password"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-v1-update-password" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-v1-update-password">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-v1-update-password" data-method="PUT"
+      data-path="api/v1/update/password"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-v1-update-password', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-v1-update-password"
+                    onclick="tryItOut('PUTapi-v1-update-password');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-v1-update-password"
+                    onclick="cancelTryOut('PUTapi-v1-update-password');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-v1-update-password"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/v1/update/password</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-v1-update-password"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-v1-update-password"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password"                data-endpoint="PUTapi-v1-update-password"
+               value="\$IfQ]*C[Gj""
+               data-component="body">
+    <br>
+<p>The new password of user. Example: <code>\$IfQ]*C[Gj"</code></p>
+        </div>
+        </form>
+
+            
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>

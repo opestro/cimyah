@@ -1,0 +1,942 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/shofy.test"
+        }
+    ],
+    "info": {
+        "name": "Your App",
+        "_postman_id": "c2dbcaa8-e4c6-4c80-a89e-4edc9c2a1821",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "description": "",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"first_name\":\"repudiandae\",\"last_name\":\"sed\",\"email\":\"aiden.stanton@example.org\",\"password\":\"xnGXQjmJ-iXP\",\"phone\":\"provident\",\"password_confirmation\":\"ab\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"error\": false,\n\"data\": null,\n\"message\": \"Registered successfully! We emailed you to verify your account!\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n\"message\": \"The given data was invalid.\",\n\"errors\": {\n    \"first_name\": [\n        \"The first name field is required.\"\n    ],\n    \"last_name\": [\n        \"The last name field is required.\"\n    ],\n    \"email\": [\n        \"The email field is required.\"\n    ],\n    \"password\": [\n        \"The password field is required.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"e.g: abc@example.com\",\"password\":\"9$g^}56|w$r<j>9<q\",\"login\":\"nulla\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"error\": false,\n\"data\": {\n   \"token\": \"1|aF5s7p3xxx1lVL8hkSrPN72m4wPVpTvTs...\"\n},\n\"message\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Forgot password",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/password\/forgot",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/password\/forgot"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"angelo94@example.net\"}"
+                        },
+                        "description": "Send a reset link to the given user.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Resend email verification",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/resend-verify-account-email",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/resend-verify-account-email"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"chadrick36@example.org\"}"
+                        },
+                        "description": "Resend the email verification notification.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/logout"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"error\":true,\"data\":null,\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Blog",
+            "description": "",
+            "item": [
+                {
+                    "name": "Search post",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/search",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/search"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"q\":\"veniam\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "51"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"error\":true,\"data\":null,\"message\":\"No results found, please try with different keywords.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "List posts",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/posts",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/posts"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "50"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":1,\"name\":\"4 Expert Tips On How To Choose The Right Men\\u2019s Wallet\",\"slug\":\"4-expert-tips-on-how-to-choose-the-right-mens-wallet\",\"description\":\"Alice, with a shiver. 'I beg your pardon,' said Alice indignantly, and she hastily dried her eyes immediately met those of a muchness\\\"--did you ever saw. How she longed to change the subject. 'Go on.\",\"image\":\"http:\\\/\\\/shofy.test\\\/storage\\\/main\\\/blog\\\/post-7.jpg\",\"categories\":[{\"id\":2,\"name\":\"Fashion\",\"slug\":\"fashion\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/fashion\",\"description\":\"Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.\"},{\"id\":4,\"name\":\"Commercial\",\"slug\":\"commercial\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/commercial\",\"description\":\"Quas in id sit. Dolorem provident minima modi dolor est.\"}],\"tags\":[{\"id\":1,\"name\":\"General\",\"slug\":\"general\",\"description\":\"\"},{\"id\":3,\"name\":\"Fashion\",\"slug\":\"fashion\",\"description\":\"\"},{\"id\":8,\"name\":\"Sunglasses\",\"slug\":\"sunglasses\",\"description\":\"\"}],\"created_at\":\"2024-04-11T08:14:30.000000Z\",\"updated_at\":\"2024-04-11T08:14:30.000000Z\"},{\"id\":2,\"name\":\"Sexy Clutches: How to Buy & Wear a Designer Clutch Bag\",\"slug\":\"sexy-clutches-how-to-buy-wear-a-designer-clutch-bag\",\"description\":\"Queen of Hearts, carrying the King's crown on a little timidly, for she felt that it was growing, and she jumped up and saying, 'Thank you, sir, for your walk!\\\" \\\"Coming in a minute or two, it was.\",\"image\":\"http:\\\/\\\/shofy.test\\\/storage\\\/main\\\/blog\\\/post-9.jpg\",\"categories\":[{\"id\":2,\"name\":\"Fashion\",\"slug\":\"fashion\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/fashion\",\"description\":\"Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.\"},{\"id\":5,\"name\":\"Organic Fruits\",\"slug\":\"organic-fruits\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/organic-fruits\",\"description\":\"Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.\"}],\"tags\":[{\"id\":2,\"name\":\"Design\",\"slug\":\"design\",\"description\":\"\"},{\"id\":6,\"name\":\"Nature\",\"slug\":\"nature\",\"description\":\"\"}],\"created_at\":\"2024-04-11T08:14:30.000000Z\",\"updated_at\":\"2024-04-11T08:14:30.000000Z\"},{\"id\":3,\"name\":\"The Top 2020 Handbag Trends to Know\",\"slug\":\"the-top-2020-handbag-trends-to-know\",\"description\":\"Queen. 'Well, I shan't go, at any rate he might answer questions.--How am I to get rather sleepy, and went by without noticing her. Then followed the Knave 'Turn them over!' The Knave did so, very.\",\"image\":\"http:\\\/\\\/shofy.test\\\/storage\\\/main\\\/blog\\\/post-4.jpg\",\"categories\":[{\"id\":2,\"name\":\"Fashion\",\"slug\":\"fashion\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/fashion\",\"description\":\"Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.\"},{\"id\":5,\"name\":\"Organic Fruits\",\"slug\":\"organic-fruits\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/organic-fruits\",\"description\":\"Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.\"}],\"tags\":[{\"id\":5,\"name\":\"Modern\",\"slug\":\"modern\",\"description\":\"\"},{\"id\":7,\"name\":\"Vintage\",\"slug\":\"vintage\",\"description\":\"\"}],\"created_at\":\"2024-04-11T08:14:30.000000Z\",\"updated_at\":\"2024-04-11T08:14:30.000000Z\"},{\"id\":4,\"name\":\"How to Match the Color of Your Handbag With an Outfit\",\"slug\":\"how-to-match-the-color-of-your-handbag-with-an-outfit\",\"description\":\"I to do?' said Alice. The King looked anxiously round, to make out which were the two sides of it, and on both sides at once. The Dormouse had closed its eyes again, to see what I was a good deal.\",\"image\":\"http:\\\/\\\/shofy.test\\\/storage\\\/main\\\/blog\\\/post-3.jpg\",\"categories\":[{\"id\":3,\"name\":\"Electronic\",\"slug\":\"electronic\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/electronic\",\"description\":\"Quis qui aspernatur in quia hic eum. Est molestias assumenda nam iusto optio voluptatem et. Repudiandae dolores quibusdam ut adipisci. Molestiae sequi reprehenderit mollitia cum non.\"},{\"id\":4,\"name\":\"Commercial\",\"slug\":\"commercial\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/commercial\",\"description\":\"Quas in id sit. Dolorem provident minima modi dolor est.\"}],\"tags\":[{\"id\":3,\"name\":\"Fashion\",\"slug\":\"fashion\",\"description\":\"\"},{\"id\":7,\"name\":\"Vintage\",\"slug\":\"vintage\",\"description\":\"\"},{\"id\":8,\"name\":\"Sunglasses\",\"slug\":\"sunglasses\",\"description\":\"\"}],\"created_at\":\"2024-04-11T08:14:30.000000Z\",\"updated_at\":\"2024-04-11T08:14:30.000000Z\"},{\"id\":5,\"name\":\"How to Care for Leather Bags\",\"slug\":\"how-to-care-for-leather-bags\",\"description\":\"Quick, now!' And Alice was just going to begin with; and being so many lessons to learn! No, I've made up my mind about it; and while she remembered trying to make out what it was: at first was in.\",\"image\":\"http:\\\/\\\/shofy.test\\\/storage\\\/main\\\/blog\\\/post-7.jpg\",\"categories\":[{\"id\":4,\"name\":\"Commercial\",\"slug\":\"commercial\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/commercial\",\"description\":\"Quas in id sit. Dolorem provident minima modi dolor est.\"},{\"id\":5,\"name\":\"Organic Fruits\",\"slug\":\"organic-fruits\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/organic-fruits\",\"description\":\"Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.\"}],\"tags\":[{\"id\":2,\"name\":\"Design\",\"slug\":\"design\",\"description\":\"\"},{\"id\":5,\"name\":\"Modern\",\"slug\":\"modern\",\"description\":\"\"},{\"id\":6,\"name\":\"Nature\",\"slug\":\"nature\",\"description\":\"\"}],\"created_at\":\"2024-04-11T08:14:30.000000Z\",\"updated_at\":\"2024-04-11T08:14:30.000000Z\"},{\"id\":6,\"name\":\"We're Crushing Hard on Summer's 10 Biggest Bag Trends\",\"slug\":\"were-crushing-hard-on-summers-10-biggest-bag-trends\",\"description\":\"Alice whispered, 'that it's done by everybody minding their own business!' 'Ah, well! It means much the same thing with you,' said Alice, seriously, 'I'll have nothing more to do with you. Mind.\",\"image\":\"http:\\\/\\\/shofy.test\\\/storage\\\/main\\\/blog\\\/post-9.jpg\",\"categories\":[{\"id\":6,\"name\":\"Ecological\",\"slug\":\"ecological\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/ecological\",\"description\":\"Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.\"}],\"tags\":[{\"id\":2,\"name\":\"Design\",\"slug\":\"design\",\"description\":\"\"},{\"id\":7,\"name\":\"Vintage\",\"slug\":\"vintage\",\"description\":\"\"}],\"created_at\":\"2024-04-11T08:14:30.000000Z\",\"updated_at\":\"2024-04-11T08:14:30.000000Z\"},{\"id\":7,\"name\":\"Essential Qualities of Highly Successful Music\",\"slug\":\"essential-qualities-of-highly-successful-music\",\"description\":\"Queen, who had been for some time without hearing anything more: at last it unfolded its arms, took the hookah into its eyes by this time?' she said to herself how this same little sister of hers.\",\"image\":\"http:\\\/\\\/shofy.test\\\/storage\\\/main\\\/blog\\\/post-7.jpg\",\"categories\":[{\"id\":1,\"name\":\"Crisp Bread & Cake\",\"slug\":\"crisp-bread-cake\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/crisp-bread-cake\",\"description\":\"Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.\"},{\"id\":6,\"name\":\"Ecological\",\"slug\":\"ecological\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/ecological\",\"description\":\"Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.\"}],\"tags\":[{\"id\":1,\"name\":\"General\",\"slug\":\"general\",\"description\":\"\"},{\"id\":7,\"name\":\"Vintage\",\"slug\":\"vintage\",\"description\":\"\"},{\"id\":8,\"name\":\"Sunglasses\",\"slug\":\"sunglasses\",\"description\":\"\"}],\"created_at\":\"2024-04-11T08:14:30.000000Z\",\"updated_at\":\"2024-04-11T08:14:30.000000Z\"},{\"id\":8,\"name\":\"9 Things I Love About Shaving My Head\",\"slug\":\"9-things-i-love-about-shaving-my-head\",\"description\":\"Said the mouse doesn't get out.\\\" Only I don't know,' he went on so long since she had wept when she got up this morning, but I shall have somebody to talk to.' 'How are you thinking of?' 'I beg your.\",\"image\":\"http:\\\/\\\/shofy.test\\\/storage\\\/main\\\/blog\\\/post-7.jpg\",\"categories\":[{\"id\":1,\"name\":\"Crisp Bread & Cake\",\"slug\":\"crisp-bread-cake\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/crisp-bread-cake\",\"description\":\"Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.\"},{\"id\":5,\"name\":\"Organic Fruits\",\"slug\":\"organic-fruits\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/organic-fruits\",\"description\":\"Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.\"}],\"tags\":[{\"id\":5,\"name\":\"Modern\",\"slug\":\"modern\",\"description\":\"\"},{\"id\":6,\"name\":\"Nature\",\"slug\":\"nature\",\"description\":\"\"}],\"created_at\":\"2024-04-11T08:14:30.000000Z\",\"updated_at\":\"2024-04-11T08:14:30.000000Z\"},{\"id\":9,\"name\":\"Why Teamwork Really Makes The Dream Work\",\"slug\":\"why-teamwork-really-makes-the-dream-work\",\"description\":\"Cat's head began fading away the moment he was in confusion, getting the Dormouse said--' the Hatter went on, '\\\"--found it advisable to go on crying in this way! Stop this moment, and fetch me a.\",\"image\":\"http:\\\/\\\/shofy.test\\\/storage\\\/main\\\/blog\\\/post-1.jpg\",\"categories\":[{\"id\":1,\"name\":\"Crisp Bread & Cake\",\"slug\":\"crisp-bread-cake\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/crisp-bread-cake\",\"description\":\"Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.\"},{\"id\":5,\"name\":\"Organic Fruits\",\"slug\":\"organic-fruits\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/organic-fruits\",\"description\":\"Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.\"}],\"tags\":[{\"id\":3,\"name\":\"Fashion\",\"slug\":\"fashion\",\"description\":\"\"},{\"id\":5,\"name\":\"Modern\",\"slug\":\"modern\",\"description\":\"\"},{\"id\":6,\"name\":\"Nature\",\"slug\":\"nature\",\"description\":\"\"}],\"created_at\":\"2024-04-11T08:14:30.000000Z\",\"updated_at\":\"2024-04-11T08:14:30.000000Z\"},{\"id\":10,\"name\":\"The World Caters to Average People\",\"slug\":\"the-world-caters-to-average-people\",\"description\":\"Alice, every now and then raised himself upon tiptoe, put his mouth close to her: its face to see what the flame of a tree. By the use of this rope--Will the roof bear?--Mind that loose slate--Oh.\",\"image\":\"http:\\\/\\\/shofy.test\\\/storage\\\/main\\\/blog\\\/post-10.jpg\",\"categories\":[{\"id\":2,\"name\":\"Fashion\",\"slug\":\"fashion\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/fashion\",\"description\":\"Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.\"},{\"id\":4,\"name\":\"Commercial\",\"slug\":\"commercial\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/commercial\",\"description\":\"Quas in id sit. Dolorem provident minima modi dolor est.\"}],\"tags\":[{\"id\":2,\"name\":\"Design\",\"slug\":\"design\",\"description\":\"\"},{\"id\":3,\"name\":\"Fashion\",\"slug\":\"fashion\",\"description\":\"\"},{\"id\":6,\"name\":\"Nature\",\"slug\":\"nature\",\"description\":\"\"}],\"created_at\":\"2024-04-11T08:14:30.000000Z\",\"updated_at\":\"2024-04-11T08:14:30.000000Z\"}],\"links\":{\"first\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/posts?page=1\",\"last\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/posts?page=2\",\"prev\":null,\"next\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/posts?page=2\"},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":2,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/posts?page=1\",\"label\":\"1\",\"active\":true},{\"url\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/posts?page=2\",\"label\":\"2\",\"active\":false},{\"url\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/posts?page=2\",\"label\":\"Next &raquo;\",\"active\":false}],\"path\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/posts\",\"per_page\":10,\"to\":10,\"total\":18},\"error\":false,\"message\":null}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "List categories",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/categories",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/categories"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "49"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":6,\"name\":\"Ecological\",\"slug\":\"ecological\",\"description\":\"Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.\",\"children\":[],\"parent\":{\"id\":null,\"name\":\"\",\"slug\":\"\",\"url\":\"http:\\\/\\\/shofy.test\",\"description\":\"\"}},{\"id\":5,\"name\":\"Organic Fruits\",\"slug\":\"organic-fruits\",\"description\":\"Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.\",\"children\":[],\"parent\":{\"id\":null,\"name\":\"\",\"slug\":\"\",\"url\":\"http:\\\/\\\/shofy.test\",\"description\":\"\"}},{\"id\":4,\"name\":\"Commercial\",\"slug\":\"commercial\",\"description\":\"Quas in id sit. Dolorem provident minima modi dolor est.\",\"children\":[],\"parent\":{\"id\":null,\"name\":\"\",\"slug\":\"\",\"url\":\"http:\\\/\\\/shofy.test\",\"description\":\"\"}},{\"id\":3,\"name\":\"Electronic\",\"slug\":\"electronic\",\"description\":\"Quis qui aspernatur in quia hic eum. Est molestias assumenda nam iusto optio voluptatem et. Repudiandae dolores quibusdam ut adipisci. Molestiae sequi reprehenderit mollitia cum non.\",\"children\":[],\"parent\":{\"id\":null,\"name\":\"\",\"slug\":\"\",\"url\":\"http:\\\/\\\/shofy.test\",\"description\":\"\"}},{\"id\":2,\"name\":\"Fashion\",\"slug\":\"fashion\",\"description\":\"Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.\",\"children\":[],\"parent\":{\"id\":null,\"name\":\"\",\"slug\":\"\",\"url\":\"http:\\\/\\\/shofy.test\",\"description\":\"\"}},{\"id\":1,\"name\":\"Crisp Bread & Cake\",\"slug\":\"crisp-bread-cake\",\"description\":\"Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.\",\"children\":[],\"parent\":{\"id\":null,\"name\":\"\",\"slug\":\"\",\"url\":\"http:\\\/\\\/shofy.test\",\"description\":\"\"}}],\"links\":{\"first\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/categories?page=1\",\"last\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/categories?page=1\",\"prev\":null,\"next\":null},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/categories?page=1\",\"label\":\"1\",\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"active\":false}],\"path\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/categories\",\"per_page\":10,\"to\":6,\"total\":6},\"error\":false,\"message\":null}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "List tags",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/tags",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/tags"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "48"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":1,\"name\":\"General\",\"slug\":\"general\",\"description\":\"\"},{\"id\":2,\"name\":\"Design\",\"slug\":\"design\",\"description\":\"\"},{\"id\":3,\"name\":\"Fashion\",\"slug\":\"fashion\",\"description\":\"\"},{\"id\":4,\"name\":\"Branding\",\"slug\":\"branding\",\"description\":\"\"},{\"id\":5,\"name\":\"Modern\",\"slug\":\"modern\",\"description\":\"\"},{\"id\":6,\"name\":\"Nature\",\"slug\":\"nature\",\"description\":\"\"},{\"id\":7,\"name\":\"Vintage\",\"slug\":\"vintage\",\"description\":\"\"},{\"id\":8,\"name\":\"Sunglasses\",\"slug\":\"sunglasses\",\"description\":\"\"}],\"links\":{\"first\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/tags?page=1\",\"last\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/tags?page=1\",\"prev\":null,\"next\":null},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/tags?page=1\",\"label\":\"1\",\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"active\":false}],\"path\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/tags\",\"per_page\":10,\"to\":8,\"total\":8},\"error\":false,\"message\":null}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Filters posts",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/posts\/filters",
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "15",
+                                    "description": "Current page of the collection. Default: 1",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "per_page",
+                                    "value": "17",
+                                    "description": "Maximum number of items to be returned in result set.Default: 10",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "search",
+                                    "value": "laboriosam",
+                                    "description": "Limit results to those matching a string.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "after",
+                                    "value": "rerum",
+                                    "description": "Limit response to posts published after a given ISO8601 compliant date.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "author",
+                                    "value": "aut",
+                                    "description": "Limit result set to posts assigned to specific authors.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "author_exclude",
+                                    "value": "quo",
+                                    "description": "Ensure result set excludes posts assigned to specific authors.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "before",
+                                    "value": "soluta",
+                                    "description": "Limit response to posts published before a given ISO8601 compliant date.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "exclude",
+                                    "value": "minima",
+                                    "description": "Ensure result set excludes specific IDs.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "vero",
+                                    "description": "Limit result set to specific IDs.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "order",
+                                    "value": "magnam",
+                                    "description": "Order sort attribute ascending or descending. Default: desc .One of: asc, desc",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "order_by",
+                                    "value": "aliquam",
+                                    "description": "Sort collection by object attribute. Default: updated_at. One of: author, created_at, updated_at, id,  slug, title",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "categories",
+                                    "value": "non",
+                                    "description": "Limit result set to all items that have the specified term assigned in the categories taxonomy.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "categories_exclude",
+                                    "value": "aperiam",
+                                    "description": "Limit result set to all items except those that have the specified term assigned in the categories taxonomy.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "tags",
+                                    "value": "ut",
+                                    "description": "Limit result set to all items that have the specified term assigned in the tags taxonomy.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "tags_exclude",
+                                    "value": "odit",
+                                    "description": "Limit result set to all items except those that have the specified term assigned in the tags taxonomy.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "featured",
+                                    "value": "fuga",
+                                    "description": "Limit result set to items that are sticky.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/posts\/filters?page=15&per_page=17&search=laboriosam&after=rerum&author=aut&author_exclude=quo&before=soluta&exclude=minima&include=vero&order=magnam&order_by=aliquam&categories=non&categories_exclude=aperiam&tags=ut&tags_exclude=odit&featured=fuga"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "47"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[],\"links\":{\"first\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/posts\\\/filters?page=1\",\"last\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/posts\\\/filters?page=1\",\"prev\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/posts\\\/filters?page=14\",\"next\":null},\"meta\":{\"current_page\":15,\"from\":null,\"last_page\":1,\"links\":[{\"url\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/posts\\\/filters?page=14\",\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/posts\\\/filters?page=1\",\"label\":\"1\",\"active\":false},{\"url\":null,\"label\":\"Next &raquo;\",\"active\":false}],\"path\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/posts\\\/filters\",\"per_page\":17,\"to\":null,\"total\":0},\"error\":false,\"message\":null}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get post by slug",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/posts\/:slug",
+                            "query": [
+                                {
+                                    "key": "slug",
+                                    "value": "dicta",
+                                    "description": "Find by slug of post.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/posts\/:slug?slug=dicta",
+                            "variable": [
+                                {
+                                    "id": "slug",
+                                    "key": "slug",
+                                    "value": "voluptatem",
+                                    "description": "The slug of the post."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "46"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"error\":true,\"data\":null,\"message\":\"Not found\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Filters categories",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/categories\/filters",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/categories\/filters"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "45"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":5,\"name\":\"Organic Fruits\",\"slug\":\"organic-fruits\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/organic-fruits\",\"description\":\"Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.\"},{\"id\":2,\"name\":\"Fashion\",\"slug\":\"fashion\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/fashion\",\"description\":\"Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.\"},{\"id\":3,\"name\":\"Electronic\",\"slug\":\"electronic\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/electronic\",\"description\":\"Quis qui aspernatur in quia hic eum. Est molestias assumenda nam iusto optio voluptatem et. Repudiandae dolores quibusdam ut adipisci. Molestiae sequi reprehenderit mollitia cum non.\"},{\"id\":6,\"name\":\"Ecological\",\"slug\":\"ecological\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/ecological\",\"description\":\"Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.\"},{\"id\":1,\"name\":\"Crisp Bread & Cake\",\"slug\":\"crisp-bread-cake\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/crisp-bread-cake\",\"description\":\"Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.\"},{\"id\":4,\"name\":\"Commercial\",\"slug\":\"commercial\",\"url\":\"http:\\\/\\\/shofy.test\\\/blog\\\/commercial\",\"description\":\"Quas in id sit. Dolorem provident minima modi dolor est.\"}],\"links\":{\"first\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/categories\\\/filters?page=1\",\"last\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/categories\\\/filters?page=1\",\"prev\":null,\"next\":null},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/categories\\\/filters?page=1\",\"label\":\"1\",\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"active\":false}],\"path\":\"http:\\\/\\\/shofy.test\\\/api\\\/v1\\\/categories\\\/filters\",\"per_page\":10,\"to\":6,\"total\":6},\"error\":false,\"message\":null}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get category by slug",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/categories\/:slug",
+                            "query": [
+                                {
+                                    "key": "slug",
+                                    "value": "nesciunt",
+                                    "description": "Find by slug of category.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/v1\/categories\/:slug?slug=nesciunt",
+                            "variable": [
+                                {
+                                    "id": "slug",
+                                    "key": "slug",
+                                    "value": "reiciendis",
+                                    "description": "The slug of the category."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "44"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"error\":true,\"data\":null,\"message\":\"Not found\"}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Profile",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get the user profile information.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/me",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/me"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"error\":true,\"data\":null,\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update profile",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/me",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/me"
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"first_name\":\"et\",\"last_name\":\"delectus\",\"phone\":\"ad\",\"dob\":\"facere\",\"gender\":\"at\",\"description\":\"Expedita eveniet aliquam ducimus ab itaque.\",\"email\":\"willms.asia@example.net\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Avatar",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/update\/avatar",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/update\/avatar"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "avatar",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update password",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/update\/password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/update\/password"
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"password\":\"\\\\$IfQ]*C[Gj\\\"\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

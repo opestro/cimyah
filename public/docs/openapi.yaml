@@ -1,0 +1,2450 @@
+openapi: 3.0.3
+info:
+  title: 'Your App'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://shofy.test'
+paths:
+  /api/v1/register:
+    post:
+      summary: Register
+      operationId: register
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: false
+                  data: null
+                  message: 'Registered successfully! We emailed you to verify your account!'
+                properties:
+                  error:
+                    type: boolean
+                    example: false
+                  data:
+                    type: string
+                    example: null
+                  message:
+                    type: string
+                    example: 'Registered successfully! We emailed you to verify your account!'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    first_name:
+                      - 'The first name field is required.'
+                    last_name:
+                      - 'The last name field is required.'
+                    email:
+                      - 'The email field is required.'
+                    password:
+                      - 'The password field is required.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    properties:
+                      first_name:
+                        type: array
+                        example:
+                          - 'The first name field is required.'
+                        items:
+                          type: string
+                      last_name:
+                        type: array
+                        example:
+                          - 'The last name field is required.'
+                        items:
+                          type: string
+                      email:
+                        type: array
+                        example:
+                          - 'The email field is required.'
+                        items:
+                          type: string
+                      password:
+                        type: array
+                        example:
+                          - 'The password field is required.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: 'The name of the user.'
+                  example: repudiandae
+                last_name:
+                  type: string
+                  description: 'The name of the user.'
+                  example: sed
+                email:
+                  type: string
+                  description: 'The email of the user.'
+                  example: aiden.stanton@example.org
+                password:
+                  type: string
+                  description: 'The password of user to create.'
+                  example: xnGXQjmJ-iXP
+                phone:
+                  type: string
+                  description: 'The phone of the user.'
+                  example: provident
+                password_confirmation:
+                  type: string
+                  description: 'The password confirmation.'
+                  example: ab
+              required:
+                - first_name
+                - last_name
+                - email
+                - password
+                - phone
+                - password_confirmation
+      security: []
+  /api/v1/login:
+    post:
+      summary: Login
+      operationId: login
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: false
+                  data:
+                    token: 1|aF5s7p3xxx1lVL8hkSrPN72m4wPVpTvTs...
+                  message: null
+                properties:
+                  error:
+                    type: boolean
+                    example: false
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        example: 1|aF5s7p3xxx1lVL8hkSrPN72m4wPVpTvTs...
+                  message:
+                    type: string
+                    example: null
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: 'e.g: abc@example.com'
+                password:
+                  type: string
+                  description: 'The password of user to create.'
+                  example: '9$g^}56|w$r<j>9<q'
+                login:
+                  type: string
+                  description: 'The email/phone of the user.'
+                  example: nulla
+              required:
+                - email
+                - password
+                - login
+      security: []
+  /api/v1/password/forgot:
+    post:
+      summary: 'Forgot password'
+      operationId: forgotPassword
+      description: 'Send a reset link to the given user.'
+      parameters: []
+      responses: {  }
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email of the user.'
+                  example: angelo94@example.net
+              required:
+                - email
+      security: []
+  /api/v1/resend-verify-account-email:
+    post:
+      summary: 'Resend email verification'
+      operationId: resendEmailVerification
+      description: 'Resend the email verification notification.'
+      parameters: []
+      responses: {  }
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email of the user.'
+                  example: chadrick36@example.org
+              required:
+                - email
+      security: []
+  /api/v1/logout:
+    get:
+      summary: Logout
+      operationId: logout
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: true
+                  data: null
+                  message: Unauthenticated.
+                properties:
+                  error:
+                    type: boolean
+                    example: true
+                  data:
+                    type: string
+                    example: null
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Authentication
+  /api/v1/search:
+    get:
+      summary: 'Search post'
+      operationId: searchPost
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: true
+                  data: null
+                  message: 'No results found, please try with different keywords.'
+                properties:
+                  error:
+                    type: boolean
+                    example: true
+                  data:
+                    type: string
+                    example: null
+                  message:
+                    type: string
+                    example: 'No results found, please try with different keywords.'
+      tags:
+        - Blog
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                q:
+                  type: string
+                  description: 'The search keyword.'
+                  example: veniam
+              required:
+                - q
+      security: []
+  /api/v1/posts:
+    get:
+      summary: 'List posts'
+      operationId: listPosts
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: '4 Expert Tips On How To Choose The Right Men’s Wallet'
+                      slug: 4-expert-tips-on-how-to-choose-the-right-mens-wallet
+                      description: "Alice, with a shiver. 'I beg your pardon,' said Alice indignantly, and she hastily dried her eyes immediately met those of a muchness\"--did you ever saw. How she longed to change the subject. 'Go on."
+                      image: 'http://shofy.test/storage/main/blog/post-7.jpg'
+                      categories:
+                        -
+                          id: 2
+                          name: Fashion
+                          slug: fashion
+                          url: 'http://shofy.test/blog/fashion'
+                          description: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                        -
+                          id: 4
+                          name: Commercial
+                          slug: commercial
+                          url: 'http://shofy.test/blog/commercial'
+                          description: 'Quas in id sit. Dolorem provident minima modi dolor est.'
+                      tags:
+                        -
+                          id: 1
+                          name: General
+                          slug: general
+                          description: ''
+                        -
+                          id: 3
+                          name: Fashion
+                          slug: fashion
+                          description: ''
+                        -
+                          id: 8
+                          name: Sunglasses
+                          slug: sunglasses
+                          description: ''
+                      created_at: '2024-04-11T08:14:30.000000Z'
+                      updated_at: '2024-04-11T08:14:30.000000Z'
+                    -
+                      id: 2
+                      name: 'Sexy Clutches: How to Buy & Wear a Designer Clutch Bag'
+                      slug: sexy-clutches-how-to-buy-wear-a-designer-clutch-bag
+                      description: 'Queen of Hearts, carrying the King''s crown on a little timidly, for she felt that it was growing, and she jumped up and saying, ''Thank you, sir, for your walk!" "Coming in a minute or two, it was.'
+                      image: 'http://shofy.test/storage/main/blog/post-9.jpg'
+                      categories:
+                        -
+                          id: 2
+                          name: Fashion
+                          slug: fashion
+                          url: 'http://shofy.test/blog/fashion'
+                          description: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                        -
+                          id: 5
+                          name: 'Organic Fruits'
+                          slug: organic-fruits
+                          url: 'http://shofy.test/blog/organic-fruits'
+                          description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                      tags:
+                        -
+                          id: 2
+                          name: Design
+                          slug: design
+                          description: ''
+                        -
+                          id: 6
+                          name: Nature
+                          slug: nature
+                          description: ''
+                      created_at: '2024-04-11T08:14:30.000000Z'
+                      updated_at: '2024-04-11T08:14:30.000000Z'
+                    -
+                      id: 3
+                      name: 'The Top 2020 Handbag Trends to Know'
+                      slug: the-top-2020-handbag-trends-to-know
+                      description: "Queen. 'Well, I shan't go, at any rate he might answer questions.--How am I to get rather sleepy, and went by without noticing her. Then followed the Knave 'Turn them over!' The Knave did so, very."
+                      image: 'http://shofy.test/storage/main/blog/post-4.jpg'
+                      categories:
+                        -
+                          id: 2
+                          name: Fashion
+                          slug: fashion
+                          url: 'http://shofy.test/blog/fashion'
+                          description: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                        -
+                          id: 5
+                          name: 'Organic Fruits'
+                          slug: organic-fruits
+                          url: 'http://shofy.test/blog/organic-fruits'
+                          description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                      tags:
+                        -
+                          id: 5
+                          name: Modern
+                          slug: modern
+                          description: ''
+                        -
+                          id: 7
+                          name: Vintage
+                          slug: vintage
+                          description: ''
+                      created_at: '2024-04-11T08:14:30.000000Z'
+                      updated_at: '2024-04-11T08:14:30.000000Z'
+                    -
+                      id: 4
+                      name: 'How to Match the Color of Your Handbag With an Outfit'
+                      slug: how-to-match-the-color-of-your-handbag-with-an-outfit
+                      description: "I to do?' said Alice. The King looked anxiously round, to make out which were the two sides of it, and on both sides at once. The Dormouse had closed its eyes again, to see what I was a good deal."
+                      image: 'http://shofy.test/storage/main/blog/post-3.jpg'
+                      categories:
+                        -
+                          id: 3
+                          name: Electronic
+                          slug: electronic
+                          url: 'http://shofy.test/blog/electronic'
+                          description: 'Quis qui aspernatur in quia hic eum. Est molestias assumenda nam iusto optio voluptatem et. Repudiandae dolores quibusdam ut adipisci. Molestiae sequi reprehenderit mollitia cum non.'
+                        -
+                          id: 4
+                          name: Commercial
+                          slug: commercial
+                          url: 'http://shofy.test/blog/commercial'
+                          description: 'Quas in id sit. Dolorem provident minima modi dolor est.'
+                      tags:
+                        -
+                          id: 3
+                          name: Fashion
+                          slug: fashion
+                          description: ''
+                        -
+                          id: 7
+                          name: Vintage
+                          slug: vintage
+                          description: ''
+                        -
+                          id: 8
+                          name: Sunglasses
+                          slug: sunglasses
+                          description: ''
+                      created_at: '2024-04-11T08:14:30.000000Z'
+                      updated_at: '2024-04-11T08:14:30.000000Z'
+                    -
+                      id: 5
+                      name: 'How to Care for Leather Bags'
+                      slug: how-to-care-for-leather-bags
+                      description: "Quick, now!' And Alice was just going to begin with; and being so many lessons to learn! No, I've made up my mind about it; and while she remembered trying to make out what it was: at first was in."
+                      image: 'http://shofy.test/storage/main/blog/post-7.jpg'
+                      categories:
+                        -
+                          id: 4
+                          name: Commercial
+                          slug: commercial
+                          url: 'http://shofy.test/blog/commercial'
+                          description: 'Quas in id sit. Dolorem provident minima modi dolor est.'
+                        -
+                          id: 5
+                          name: 'Organic Fruits'
+                          slug: organic-fruits
+                          url: 'http://shofy.test/blog/organic-fruits'
+                          description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                      tags:
+                        -
+                          id: 2
+                          name: Design
+                          slug: design
+                          description: ''
+                        -
+                          id: 5
+                          name: Modern
+                          slug: modern
+                          description: ''
+                        -
+                          id: 6
+                          name: Nature
+                          slug: nature
+                          description: ''
+                      created_at: '2024-04-11T08:14:30.000000Z'
+                      updated_at: '2024-04-11T08:14:30.000000Z'
+                    -
+                      id: 6
+                      name: "We're Crushing Hard on Summer's 10 Biggest Bag Trends"
+                      slug: were-crushing-hard-on-summers-10-biggest-bag-trends
+                      description: "Alice whispered, 'that it's done by everybody minding their own business!' 'Ah, well! It means much the same thing with you,' said Alice, seriously, 'I'll have nothing more to do with you. Mind."
+                      image: 'http://shofy.test/storage/main/blog/post-9.jpg'
+                      categories:
+                        -
+                          id: 6
+                          name: Ecological
+                          slug: ecological
+                          url: 'http://shofy.test/blog/ecological'
+                          description: 'Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.'
+                      tags:
+                        -
+                          id: 2
+                          name: Design
+                          slug: design
+                          description: ''
+                        -
+                          id: 7
+                          name: Vintage
+                          slug: vintage
+                          description: ''
+                      created_at: '2024-04-11T08:14:30.000000Z'
+                      updated_at: '2024-04-11T08:14:30.000000Z'
+                    -
+                      id: 7
+                      name: 'Essential Qualities of Highly Successful Music'
+                      slug: essential-qualities-of-highly-successful-music
+                      description: "Queen, who had been for some time without hearing anything more: at last it unfolded its arms, took the hookah into its eyes by this time?' she said to herself how this same little sister of hers."
+                      image: 'http://shofy.test/storage/main/blog/post-7.jpg'
+                      categories:
+                        -
+                          id: 1
+                          name: 'Crisp Bread & Cake'
+                          slug: crisp-bread-cake
+                          url: 'http://shofy.test/blog/crisp-bread-cake'
+                          description: 'Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.'
+                        -
+                          id: 6
+                          name: Ecological
+                          slug: ecological
+                          url: 'http://shofy.test/blog/ecological'
+                          description: 'Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.'
+                      tags:
+                        -
+                          id: 1
+                          name: General
+                          slug: general
+                          description: ''
+                        -
+                          id: 7
+                          name: Vintage
+                          slug: vintage
+                          description: ''
+                        -
+                          id: 8
+                          name: Sunglasses
+                          slug: sunglasses
+                          description: ''
+                      created_at: '2024-04-11T08:14:30.000000Z'
+                      updated_at: '2024-04-11T08:14:30.000000Z'
+                    -
+                      id: 8
+                      name: '9 Things I Love About Shaving My Head'
+                      slug: 9-things-i-love-about-shaving-my-head
+                      description: "Said the mouse doesn't get out.\" Only I don't know,' he went on so long since she had wept when she got up this morning, but I shall have somebody to talk to.' 'How are you thinking of?' 'I beg your."
+                      image: 'http://shofy.test/storage/main/blog/post-7.jpg'
+                      categories:
+                        -
+                          id: 1
+                          name: 'Crisp Bread & Cake'
+                          slug: crisp-bread-cake
+                          url: 'http://shofy.test/blog/crisp-bread-cake'
+                          description: 'Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.'
+                        -
+                          id: 5
+                          name: 'Organic Fruits'
+                          slug: organic-fruits
+                          url: 'http://shofy.test/blog/organic-fruits'
+                          description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                      tags:
+                        -
+                          id: 5
+                          name: Modern
+                          slug: modern
+                          description: ''
+                        -
+                          id: 6
+                          name: Nature
+                          slug: nature
+                          description: ''
+                      created_at: '2024-04-11T08:14:30.000000Z'
+                      updated_at: '2024-04-11T08:14:30.000000Z'
+                    -
+                      id: 9
+                      name: 'Why Teamwork Really Makes The Dream Work'
+                      slug: why-teamwork-really-makes-the-dream-work
+                      description: "Cat's head began fading away the moment he was in confusion, getting the Dormouse said--' the Hatter went on, '\"--found it advisable to go on crying in this way! Stop this moment, and fetch me a."
+                      image: 'http://shofy.test/storage/main/blog/post-1.jpg'
+                      categories:
+                        -
+                          id: 1
+                          name: 'Crisp Bread & Cake'
+                          slug: crisp-bread-cake
+                          url: 'http://shofy.test/blog/crisp-bread-cake'
+                          description: 'Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.'
+                        -
+                          id: 5
+                          name: 'Organic Fruits'
+                          slug: organic-fruits
+                          url: 'http://shofy.test/blog/organic-fruits'
+                          description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                      tags:
+                        -
+                          id: 3
+                          name: Fashion
+                          slug: fashion
+                          description: ''
+                        -
+                          id: 5
+                          name: Modern
+                          slug: modern
+                          description: ''
+                        -
+                          id: 6
+                          name: Nature
+                          slug: nature
+                          description: ''
+                      created_at: '2024-04-11T08:14:30.000000Z'
+                      updated_at: '2024-04-11T08:14:30.000000Z'
+                    -
+                      id: 10
+                      name: 'The World Caters to Average People'
+                      slug: the-world-caters-to-average-people
+                      description: 'Alice, every now and then raised himself upon tiptoe, put his mouth close to her: its face to see what the flame of a tree. By the use of this rope--Will the roof bear?--Mind that loose slate--Oh.'
+                      image: 'http://shofy.test/storage/main/blog/post-10.jpg'
+                      categories:
+                        -
+                          id: 2
+                          name: Fashion
+                          slug: fashion
+                          url: 'http://shofy.test/blog/fashion'
+                          description: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                        -
+                          id: 4
+                          name: Commercial
+                          slug: commercial
+                          url: 'http://shofy.test/blog/commercial'
+                          description: 'Quas in id sit. Dolorem provident minima modi dolor est.'
+                      tags:
+                        -
+                          id: 2
+                          name: Design
+                          slug: design
+                          description: ''
+                        -
+                          id: 3
+                          name: Fashion
+                          slug: fashion
+                          description: ''
+                        -
+                          id: 6
+                          name: Nature
+                          slug: nature
+                          description: ''
+                      created_at: '2024-04-11T08:14:30.000000Z'
+                      updated_at: '2024-04-11T08:14:30.000000Z'
+                  links:
+                    first: 'http://shofy.test/api/v1/posts?page=1'
+                    last: 'http://shofy.test/api/v1/posts?page=2'
+                    prev: null
+                    next: 'http://shofy.test/api/v1/posts?page=2'
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 2
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://shofy.test/api/v1/posts?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: 'http://shofy.test/api/v1/posts?page=2'
+                        label: '2'
+                        active: false
+                      -
+                        url: 'http://shofy.test/api/v1/posts?page=2'
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://shofy.test/api/v1/posts'
+                    per_page: 10
+                    to: 10
+                    total: 18
+                  error: false
+                  message: null
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: '4 Expert Tips On How To Choose The Right Men’s Wallet'
+                        slug: 4-expert-tips-on-how-to-choose-the-right-mens-wallet
+                        description: "Alice, with a shiver. 'I beg your pardon,' said Alice indignantly, and she hastily dried her eyes immediately met those of a muchness\"--did you ever saw. How she longed to change the subject. 'Go on."
+                        image: 'http://shofy.test/storage/main/blog/post-7.jpg'
+                        categories:
+                          -
+                            id: 2
+                            name: Fashion
+                            slug: fashion
+                            url: 'http://shofy.test/blog/fashion'
+                            description: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                          -
+                            id: 4
+                            name: Commercial
+                            slug: commercial
+                            url: 'http://shofy.test/blog/commercial'
+                            description: 'Quas in id sit. Dolorem provident minima modi dolor est.'
+                        tags:
+                          -
+                            id: 1
+                            name: General
+                            slug: general
+                            description: ''
+                          -
+                            id: 3
+                            name: Fashion
+                            slug: fashion
+                            description: ''
+                          -
+                            id: 8
+                            name: Sunglasses
+                            slug: sunglasses
+                            description: ''
+                        created_at: '2024-04-11T08:14:30.000000Z'
+                        updated_at: '2024-04-11T08:14:30.000000Z'
+                      -
+                        id: 2
+                        name: 'Sexy Clutches: How to Buy & Wear a Designer Clutch Bag'
+                        slug: sexy-clutches-how-to-buy-wear-a-designer-clutch-bag
+                        description: 'Queen of Hearts, carrying the King''s crown on a little timidly, for she felt that it was growing, and she jumped up and saying, ''Thank you, sir, for your walk!" "Coming in a minute or two, it was.'
+                        image: 'http://shofy.test/storage/main/blog/post-9.jpg'
+                        categories:
+                          -
+                            id: 2
+                            name: Fashion
+                            slug: fashion
+                            url: 'http://shofy.test/blog/fashion'
+                            description: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                          -
+                            id: 5
+                            name: 'Organic Fruits'
+                            slug: organic-fruits
+                            url: 'http://shofy.test/blog/organic-fruits'
+                            description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                        tags:
+                          -
+                            id: 2
+                            name: Design
+                            slug: design
+                            description: ''
+                          -
+                            id: 6
+                            name: Nature
+                            slug: nature
+                            description: ''
+                        created_at: '2024-04-11T08:14:30.000000Z'
+                        updated_at: '2024-04-11T08:14:30.000000Z'
+                      -
+                        id: 3
+                        name: 'The Top 2020 Handbag Trends to Know'
+                        slug: the-top-2020-handbag-trends-to-know
+                        description: "Queen. 'Well, I shan't go, at any rate he might answer questions.--How am I to get rather sleepy, and went by without noticing her. Then followed the Knave 'Turn them over!' The Knave did so, very."
+                        image: 'http://shofy.test/storage/main/blog/post-4.jpg'
+                        categories:
+                          -
+                            id: 2
+                            name: Fashion
+                            slug: fashion
+                            url: 'http://shofy.test/blog/fashion'
+                            description: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                          -
+                            id: 5
+                            name: 'Organic Fruits'
+                            slug: organic-fruits
+                            url: 'http://shofy.test/blog/organic-fruits'
+                            description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                        tags:
+                          -
+                            id: 5
+                            name: Modern
+                            slug: modern
+                            description: ''
+                          -
+                            id: 7
+                            name: Vintage
+                            slug: vintage
+                            description: ''
+                        created_at: '2024-04-11T08:14:30.000000Z'
+                        updated_at: '2024-04-11T08:14:30.000000Z'
+                      -
+                        id: 4
+                        name: 'How to Match the Color of Your Handbag With an Outfit'
+                        slug: how-to-match-the-color-of-your-handbag-with-an-outfit
+                        description: "I to do?' said Alice. The King looked anxiously round, to make out which were the two sides of it, and on both sides at once. The Dormouse had closed its eyes again, to see what I was a good deal."
+                        image: 'http://shofy.test/storage/main/blog/post-3.jpg'
+                        categories:
+                          -
+                            id: 3
+                            name: Electronic
+                            slug: electronic
+                            url: 'http://shofy.test/blog/electronic'
+                            description: 'Quis qui aspernatur in quia hic eum. Est molestias assumenda nam iusto optio voluptatem et. Repudiandae dolores quibusdam ut adipisci. Molestiae sequi reprehenderit mollitia cum non.'
+                          -
+                            id: 4
+                            name: Commercial
+                            slug: commercial
+                            url: 'http://shofy.test/blog/commercial'
+                            description: 'Quas in id sit. Dolorem provident minima modi dolor est.'
+                        tags:
+                          -
+                            id: 3
+                            name: Fashion
+                            slug: fashion
+                            description: ''
+                          -
+                            id: 7
+                            name: Vintage
+                            slug: vintage
+                            description: ''
+                          -
+                            id: 8
+                            name: Sunglasses
+                            slug: sunglasses
+                            description: ''
+                        created_at: '2024-04-11T08:14:30.000000Z'
+                        updated_at: '2024-04-11T08:14:30.000000Z'
+                      -
+                        id: 5
+                        name: 'How to Care for Leather Bags'
+                        slug: how-to-care-for-leather-bags
+                        description: "Quick, now!' And Alice was just going to begin with; and being so many lessons to learn! No, I've made up my mind about it; and while she remembered trying to make out what it was: at first was in."
+                        image: 'http://shofy.test/storage/main/blog/post-7.jpg'
+                        categories:
+                          -
+                            id: 4
+                            name: Commercial
+                            slug: commercial
+                            url: 'http://shofy.test/blog/commercial'
+                            description: 'Quas in id sit. Dolorem provident minima modi dolor est.'
+                          -
+                            id: 5
+                            name: 'Organic Fruits'
+                            slug: organic-fruits
+                            url: 'http://shofy.test/blog/organic-fruits'
+                            description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                        tags:
+                          -
+                            id: 2
+                            name: Design
+                            slug: design
+                            description: ''
+                          -
+                            id: 5
+                            name: Modern
+                            slug: modern
+                            description: ''
+                          -
+                            id: 6
+                            name: Nature
+                            slug: nature
+                            description: ''
+                        created_at: '2024-04-11T08:14:30.000000Z'
+                        updated_at: '2024-04-11T08:14:30.000000Z'
+                      -
+                        id: 6
+                        name: "We're Crushing Hard on Summer's 10 Biggest Bag Trends"
+                        slug: were-crushing-hard-on-summers-10-biggest-bag-trends
+                        description: "Alice whispered, 'that it's done by everybody minding their own business!' 'Ah, well! It means much the same thing with you,' said Alice, seriously, 'I'll have nothing more to do with you. Mind."
+                        image: 'http://shofy.test/storage/main/blog/post-9.jpg'
+                        categories:
+                          -
+                            id: 6
+                            name: Ecological
+                            slug: ecological
+                            url: 'http://shofy.test/blog/ecological'
+                            description: 'Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.'
+                        tags:
+                          -
+                            id: 2
+                            name: Design
+                            slug: design
+                            description: ''
+                          -
+                            id: 7
+                            name: Vintage
+                            slug: vintage
+                            description: ''
+                        created_at: '2024-04-11T08:14:30.000000Z'
+                        updated_at: '2024-04-11T08:14:30.000000Z'
+                      -
+                        id: 7
+                        name: 'Essential Qualities of Highly Successful Music'
+                        slug: essential-qualities-of-highly-successful-music
+                        description: "Queen, who had been for some time without hearing anything more: at last it unfolded its arms, took the hookah into its eyes by this time?' she said to herself how this same little sister of hers."
+                        image: 'http://shofy.test/storage/main/blog/post-7.jpg'
+                        categories:
+                          -
+                            id: 1
+                            name: 'Crisp Bread & Cake'
+                            slug: crisp-bread-cake
+                            url: 'http://shofy.test/blog/crisp-bread-cake'
+                            description: 'Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.'
+                          -
+                            id: 6
+                            name: Ecological
+                            slug: ecological
+                            url: 'http://shofy.test/blog/ecological'
+                            description: 'Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.'
+                        tags:
+                          -
+                            id: 1
+                            name: General
+                            slug: general
+                            description: ''
+                          -
+                            id: 7
+                            name: Vintage
+                            slug: vintage
+                            description: ''
+                          -
+                            id: 8
+                            name: Sunglasses
+                            slug: sunglasses
+                            description: ''
+                        created_at: '2024-04-11T08:14:30.000000Z'
+                        updated_at: '2024-04-11T08:14:30.000000Z'
+                      -
+                        id: 8
+                        name: '9 Things I Love About Shaving My Head'
+                        slug: 9-things-i-love-about-shaving-my-head
+                        description: "Said the mouse doesn't get out.\" Only I don't know,' he went on so long since she had wept when she got up this morning, but I shall have somebody to talk to.' 'How are you thinking of?' 'I beg your."
+                        image: 'http://shofy.test/storage/main/blog/post-7.jpg'
+                        categories:
+                          -
+                            id: 1
+                            name: 'Crisp Bread & Cake'
+                            slug: crisp-bread-cake
+                            url: 'http://shofy.test/blog/crisp-bread-cake'
+                            description: 'Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.'
+                          -
+                            id: 5
+                            name: 'Organic Fruits'
+                            slug: organic-fruits
+                            url: 'http://shofy.test/blog/organic-fruits'
+                            description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                        tags:
+                          -
+                            id: 5
+                            name: Modern
+                            slug: modern
+                            description: ''
+                          -
+                            id: 6
+                            name: Nature
+                            slug: nature
+                            description: ''
+                        created_at: '2024-04-11T08:14:30.000000Z'
+                        updated_at: '2024-04-11T08:14:30.000000Z'
+                      -
+                        id: 9
+                        name: 'Why Teamwork Really Makes The Dream Work'
+                        slug: why-teamwork-really-makes-the-dream-work
+                        description: "Cat's head began fading away the moment he was in confusion, getting the Dormouse said--' the Hatter went on, '\"--found it advisable to go on crying in this way! Stop this moment, and fetch me a."
+                        image: 'http://shofy.test/storage/main/blog/post-1.jpg'
+                        categories:
+                          -
+                            id: 1
+                            name: 'Crisp Bread & Cake'
+                            slug: crisp-bread-cake
+                            url: 'http://shofy.test/blog/crisp-bread-cake'
+                            description: 'Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.'
+                          -
+                            id: 5
+                            name: 'Organic Fruits'
+                            slug: organic-fruits
+                            url: 'http://shofy.test/blog/organic-fruits'
+                            description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                        tags:
+                          -
+                            id: 3
+                            name: Fashion
+                            slug: fashion
+                            description: ''
+                          -
+                            id: 5
+                            name: Modern
+                            slug: modern
+                            description: ''
+                          -
+                            id: 6
+                            name: Nature
+                            slug: nature
+                            description: ''
+                        created_at: '2024-04-11T08:14:30.000000Z'
+                        updated_at: '2024-04-11T08:14:30.000000Z'
+                      -
+                        id: 10
+                        name: 'The World Caters to Average People'
+                        slug: the-world-caters-to-average-people
+                        description: 'Alice, every now and then raised himself upon tiptoe, put his mouth close to her: its face to see what the flame of a tree. By the use of this rope--Will the roof bear?--Mind that loose slate--Oh.'
+                        image: 'http://shofy.test/storage/main/blog/post-10.jpg'
+                        categories:
+                          -
+                            id: 2
+                            name: Fashion
+                            slug: fashion
+                            url: 'http://shofy.test/blog/fashion'
+                            description: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                          -
+                            id: 4
+                            name: Commercial
+                            slug: commercial
+                            url: 'http://shofy.test/blog/commercial'
+                            description: 'Quas in id sit. Dolorem provident minima modi dolor est.'
+                        tags:
+                          -
+                            id: 2
+                            name: Design
+                            slug: design
+                            description: ''
+                          -
+                            id: 3
+                            name: Fashion
+                            slug: fashion
+                            description: ''
+                          -
+                            id: 6
+                            name: Nature
+                            slug: nature
+                            description: ''
+                        created_at: '2024-04-11T08:14:30.000000Z'
+                        updated_at: '2024-04-11T08:14:30.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: '4 Expert Tips On How To Choose The Right Men’s Wallet'
+                        slug:
+                          type: string
+                          example: 4-expert-tips-on-how-to-choose-the-right-mens-wallet
+                        description:
+                          type: string
+                          example: "Alice, with a shiver. 'I beg your pardon,' said Alice indignantly, and she hastily dried her eyes immediately met those of a muchness\"--did you ever saw. How she longed to change the subject. 'Go on."
+                        image:
+                          type: string
+                          example: 'http://shofy.test/storage/main/blog/post-7.jpg'
+                        categories:
+                          type: array
+                          example:
+                            -
+                              id: 2
+                              name: Fashion
+                              slug: fashion
+                              url: 'http://shofy.test/blog/fashion'
+                              description: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                            -
+                              id: 4
+                              name: Commercial
+                              slug: commercial
+                              url: 'http://shofy.test/blog/commercial'
+                              description: 'Quas in id sit. Dolorem provident minima modi dolor est.'
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 2
+                              name:
+                                type: string
+                                example: Fashion
+                              slug:
+                                type: string
+                                example: fashion
+                              url:
+                                type: string
+                                example: 'http://shofy.test/blog/fashion'
+                              description:
+                                type: string
+                                example: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                        tags:
+                          type: array
+                          example:
+                            -
+                              id: 1
+                              name: General
+                              slug: general
+                              description: ''
+                            -
+                              id: 3
+                              name: Fashion
+                              slug: fashion
+                              description: ''
+                            -
+                              id: 8
+                              name: Sunglasses
+                              slug: sunglasses
+                              description: ''
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 1
+                              name:
+                                type: string
+                                example: General
+                              slug:
+                                type: string
+                                example: general
+                              description:
+                                type: string
+                                example: ''
+                        created_at:
+                          type: string
+                          example: '2024-04-11T08:14:30.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2024-04-11T08:14:30.000000Z'
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'http://shofy.test/api/v1/posts?page=1'
+                      last:
+                        type: string
+                        example: 'http://shofy.test/api/v1/posts?page=2'
+                      prev:
+                        type: string
+                        example: null
+                      next:
+                        type: string
+                        example: 'http://shofy.test/api/v1/posts?page=2'
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 2
+                      links:
+                        type: array
+                        example:
+                          -
+                            url: null
+                            label: '&laquo; Previous'
+                            active: false
+                          -
+                            url: 'http://shofy.test/api/v1/posts?page=1'
+                            label: '1'
+                            active: true
+                          -
+                            url: 'http://shofy.test/api/v1/posts?page=2'
+                            label: '2'
+                            active: false
+                          -
+                            url: 'http://shofy.test/api/v1/posts?page=2'
+                            label: 'Next &raquo;'
+                            active: false
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: null
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: 'http://shofy.test/api/v1/posts'
+                      per_page:
+                        type: integer
+                        example: 10
+                      to:
+                        type: integer
+                        example: 10
+                      total:
+                        type: integer
+                        example: 18
+                  error:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: null
+      tags:
+        - Blog
+      security: []
+  /api/v1/categories:
+    get:
+      summary: 'List categories'
+      operationId: listCategories
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 6
+                      name: Ecological
+                      slug: ecological
+                      description: 'Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.'
+                      children: []
+                      parent:
+                        id: null
+                        name: ''
+                        slug: ''
+                        url: 'http://shofy.test'
+                        description: ''
+                    -
+                      id: 5
+                      name: 'Organic Fruits'
+                      slug: organic-fruits
+                      description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                      children: []
+                      parent:
+                        id: null
+                        name: ''
+                        slug: ''
+                        url: 'http://shofy.test'
+                        description: ''
+                    -
+                      id: 4
+                      name: Commercial
+                      slug: commercial
+                      description: 'Quas in id sit. Dolorem provident minima modi dolor est.'
+                      children: []
+                      parent:
+                        id: null
+                        name: ''
+                        slug: ''
+                        url: 'http://shofy.test'
+                        description: ''
+                    -
+                      id: 3
+                      name: Electronic
+                      slug: electronic
+                      description: 'Quis qui aspernatur in quia hic eum. Est molestias assumenda nam iusto optio voluptatem et. Repudiandae dolores quibusdam ut adipisci. Molestiae sequi reprehenderit mollitia cum non.'
+                      children: []
+                      parent:
+                        id: null
+                        name: ''
+                        slug: ''
+                        url: 'http://shofy.test'
+                        description: ''
+                    -
+                      id: 2
+                      name: Fashion
+                      slug: fashion
+                      description: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                      children: []
+                      parent:
+                        id: null
+                        name: ''
+                        slug: ''
+                        url: 'http://shofy.test'
+                        description: ''
+                    -
+                      id: 1
+                      name: 'Crisp Bread & Cake'
+                      slug: crisp-bread-cake
+                      description: 'Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.'
+                      children: []
+                      parent:
+                        id: null
+                        name: ''
+                        slug: ''
+                        url: 'http://shofy.test'
+                        description: ''
+                  links:
+                    first: 'http://shofy.test/api/v1/categories?page=1'
+                    last: 'http://shofy.test/api/v1/categories?page=1'
+                    prev: null
+                    next: null
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://shofy.test/api/v1/categories?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://shofy.test/api/v1/categories'
+                    per_page: 10
+                    to: 6
+                    total: 6
+                  error: false
+                  message: null
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 6
+                        name: Ecological
+                        slug: ecological
+                        description: 'Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.'
+                        children: []
+                        parent:
+                          id: null
+                          name: ''
+                          slug: ''
+                          url: 'http://shofy.test'
+                          description: ''
+                      -
+                        id: 5
+                        name: 'Organic Fruits'
+                        slug: organic-fruits
+                        description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                        children: []
+                        parent:
+                          id: null
+                          name: ''
+                          slug: ''
+                          url: 'http://shofy.test'
+                          description: ''
+                      -
+                        id: 4
+                        name: Commercial
+                        slug: commercial
+                        description: 'Quas in id sit. Dolorem provident minima modi dolor est.'
+                        children: []
+                        parent:
+                          id: null
+                          name: ''
+                          slug: ''
+                          url: 'http://shofy.test'
+                          description: ''
+                      -
+                        id: 3
+                        name: Electronic
+                        slug: electronic
+                        description: 'Quis qui aspernatur in quia hic eum. Est molestias assumenda nam iusto optio voluptatem et. Repudiandae dolores quibusdam ut adipisci. Molestiae sequi reprehenderit mollitia cum non.'
+                        children: []
+                        parent:
+                          id: null
+                          name: ''
+                          slug: ''
+                          url: 'http://shofy.test'
+                          description: ''
+                      -
+                        id: 2
+                        name: Fashion
+                        slug: fashion
+                        description: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                        children: []
+                        parent:
+                          id: null
+                          name: ''
+                          slug: ''
+                          url: 'http://shofy.test'
+                          description: ''
+                      -
+                        id: 1
+                        name: 'Crisp Bread & Cake'
+                        slug: crisp-bread-cake
+                        description: 'Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.'
+                        children: []
+                        parent:
+                          id: null
+                          name: ''
+                          slug: ''
+                          url: 'http://shofy.test'
+                          description: ''
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 6
+                        name:
+                          type: string
+                          example: Ecological
+                        slug:
+                          type: string
+                          example: ecological
+                        description:
+                          type: string
+                          example: 'Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.'
+                        children:
+                          type: array
+                          example: []
+                        parent:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: null
+                            name:
+                              type: string
+                              example: ''
+                            slug:
+                              type: string
+                              example: ''
+                            url:
+                              type: string
+                              example: 'http://shofy.test'
+                            description:
+                              type: string
+                              example: ''
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'http://shofy.test/api/v1/categories?page=1'
+                      last:
+                        type: string
+                        example: 'http://shofy.test/api/v1/categories?page=1'
+                      prev:
+                        type: string
+                        example: null
+                      next:
+                        type: string
+                        example: null
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      links:
+                        type: array
+                        example:
+                          -
+                            url: null
+                            label: '&laquo; Previous'
+                            active: false
+                          -
+                            url: 'http://shofy.test/api/v1/categories?page=1'
+                            label: '1'
+                            active: true
+                          -
+                            url: null
+                            label: 'Next &raquo;'
+                            active: false
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: null
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: 'http://shofy.test/api/v1/categories'
+                      per_page:
+                        type: integer
+                        example: 10
+                      to:
+                        type: integer
+                        example: 6
+                      total:
+                        type: integer
+                        example: 6
+                  error:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: null
+      tags:
+        - Blog
+      security: []
+  /api/v1/tags:
+    get:
+      summary: 'List tags'
+      operationId: listTags
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: General
+                      slug: general
+                      description: ''
+                    -
+                      id: 2
+                      name: Design
+                      slug: design
+                      description: ''
+                    -
+                      id: 3
+                      name: Fashion
+                      slug: fashion
+                      description: ''
+                    -
+                      id: 4
+                      name: Branding
+                      slug: branding
+                      description: ''
+                    -
+                      id: 5
+                      name: Modern
+                      slug: modern
+                      description: ''
+                    -
+                      id: 6
+                      name: Nature
+                      slug: nature
+                      description: ''
+                    -
+                      id: 7
+                      name: Vintage
+                      slug: vintage
+                      description: ''
+                    -
+                      id: 8
+                      name: Sunglasses
+                      slug: sunglasses
+                      description: ''
+                  links:
+                    first: 'http://shofy.test/api/v1/tags?page=1'
+                    last: 'http://shofy.test/api/v1/tags?page=1'
+                    prev: null
+                    next: null
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://shofy.test/api/v1/tags?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://shofy.test/api/v1/tags'
+                    per_page: 10
+                    to: 8
+                    total: 8
+                  error: false
+                  message: null
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: General
+                        slug: general
+                        description: ''
+                      -
+                        id: 2
+                        name: Design
+                        slug: design
+                        description: ''
+                      -
+                        id: 3
+                        name: Fashion
+                        slug: fashion
+                        description: ''
+                      -
+                        id: 4
+                        name: Branding
+                        slug: branding
+                        description: ''
+                      -
+                        id: 5
+                        name: Modern
+                        slug: modern
+                        description: ''
+                      -
+                        id: 6
+                        name: Nature
+                        slug: nature
+                        description: ''
+                      -
+                        id: 7
+                        name: Vintage
+                        slug: vintage
+                        description: ''
+                      -
+                        id: 8
+                        name: Sunglasses
+                        slug: sunglasses
+                        description: ''
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: General
+                        slug:
+                          type: string
+                          example: general
+                        description:
+                          type: string
+                          example: ''
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'http://shofy.test/api/v1/tags?page=1'
+                      last:
+                        type: string
+                        example: 'http://shofy.test/api/v1/tags?page=1'
+                      prev:
+                        type: string
+                        example: null
+                      next:
+                        type: string
+                        example: null
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      links:
+                        type: array
+                        example:
+                          -
+                            url: null
+                            label: '&laquo; Previous'
+                            active: false
+                          -
+                            url: 'http://shofy.test/api/v1/tags?page=1'
+                            label: '1'
+                            active: true
+                          -
+                            url: null
+                            label: 'Next &raquo;'
+                            active: false
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: null
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: 'http://shofy.test/api/v1/tags'
+                      per_page:
+                        type: integer
+                        example: 10
+                      to:
+                        type: integer
+                        example: 8
+                      total:
+                        type: integer
+                        example: 8
+                  error:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: null
+      tags:
+        - Blog
+      security: []
+  /api/v1/posts/filters:
+    get:
+      summary: 'Filters posts'
+      operationId: filtersPosts
+      description: ''
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'Current page of the collection. Default: 1'
+          example: 15
+          required: false
+          schema:
+            type: integer
+            description: 'Current page of the collection. Default: 1'
+            example: 15
+        -
+          in: query
+          name: per_page
+          description: 'Maximum number of items to be returned in result set.Default: 10'
+          example: 17
+          required: false
+          schema:
+            type: integer
+            description: 'Maximum number of items to be returned in result set.Default: 10'
+            example: 17
+        -
+          in: query
+          name: search
+          description: 'Limit results to those matching a string.'
+          example: laboriosam
+          required: false
+          schema:
+            type: string
+            description: 'Limit results to those matching a string.'
+            example: laboriosam
+        -
+          in: query
+          name: after
+          description: 'Limit response to posts published after a given ISO8601 compliant date.'
+          example: rerum
+          required: false
+          schema:
+            type: string
+            description: 'Limit response to posts published after a given ISO8601 compliant date.'
+            example: rerum
+        -
+          in: query
+          name: author
+          description: 'Limit result set to posts assigned to specific authors.'
+          example: aut
+          required: false
+          schema:
+            type: string
+            description: 'Limit result set to posts assigned to specific authors.'
+            example: aut
+        -
+          in: query
+          name: author_exclude
+          description: 'Ensure result set excludes posts assigned to specific authors.'
+          example: quo
+          required: false
+          schema:
+            type: string
+            description: 'Ensure result set excludes posts assigned to specific authors.'
+            example: quo
+        -
+          in: query
+          name: before
+          description: 'Limit response to posts published before a given ISO8601 compliant date.'
+          example: soluta
+          required: false
+          schema:
+            type: string
+            description: 'Limit response to posts published before a given ISO8601 compliant date.'
+            example: soluta
+        -
+          in: query
+          name: exclude
+          description: 'Ensure result set excludes specific IDs.'
+          example: minima
+          required: false
+          schema:
+            type: string
+            description: 'Ensure result set excludes specific IDs.'
+            example: minima
+        -
+          in: query
+          name: include
+          description: 'Limit result set to specific IDs.'
+          example: vero
+          required: false
+          schema:
+            type: string
+            description: 'Limit result set to specific IDs.'
+            example: vero
+        -
+          in: query
+          name: order
+          description: 'Order sort attribute ascending or descending. Default: desc .One of: asc, desc'
+          example: magnam
+          required: false
+          schema:
+            type: string
+            description: 'Order sort attribute ascending or descending. Default: desc .One of: asc, desc'
+            example: magnam
+        -
+          in: query
+          name: order_by
+          description: 'Sort collection by object attribute. Default: updated_at. One of: author, created_at, updated_at, id,  slug, title'
+          example: aliquam
+          required: false
+          schema:
+            type: string
+            description: 'Sort collection by object attribute. Default: updated_at. One of: author, created_at, updated_at, id,  slug, title'
+            example: aliquam
+        -
+          in: query
+          name: categories
+          description: 'Limit result set to all items that have the specified term assigned in the categories taxonomy.'
+          example: non
+          required: false
+          schema:
+            type: string
+            description: 'Limit result set to all items that have the specified term assigned in the categories taxonomy.'
+            example: non
+        -
+          in: query
+          name: categories_exclude
+          description: 'Limit result set to all items except those that have the specified term assigned in the categories taxonomy.'
+          example: aperiam
+          required: false
+          schema:
+            type: string
+            description: 'Limit result set to all items except those that have the specified term assigned in the categories taxonomy.'
+            example: aperiam
+        -
+          in: query
+          name: tags
+          description: 'Limit result set to all items that have the specified term assigned in the tags taxonomy.'
+          example: ut
+          required: false
+          schema:
+            type: string
+            description: 'Limit result set to all items that have the specified term assigned in the tags taxonomy.'
+            example: ut
+        -
+          in: query
+          name: tags_exclude
+          description: 'Limit result set to all items except those that have the specified term assigned in the tags taxonomy.'
+          example: odit
+          required: false
+          schema:
+            type: string
+            description: 'Limit result set to all items except those that have the specified term assigned in the tags taxonomy.'
+            example: odit
+        -
+          in: query
+          name: featured
+          description: 'Limit result set to items that are sticky.'
+          example: fuga
+          required: false
+          schema:
+            type: string
+            description: 'Limit result set to items that are sticky.'
+            example: fuga
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  links:
+                    first: 'http://shofy.test/api/v1/posts/filters?page=1'
+                    last: 'http://shofy.test/api/v1/posts/filters?page=1'
+                    prev: 'http://shofy.test/api/v1/posts/filters?page=14'
+                    next: null
+                  meta:
+                    current_page: 15
+                    from: null
+                    last_page: 1
+                    links:
+                      -
+                        url: 'http://shofy.test/api/v1/posts/filters?page=14'
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://shofy.test/api/v1/posts/filters?page=1'
+                        label: '1'
+                        active: false
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://shofy.test/api/v1/posts/filters'
+                    per_page: 17
+                    to: null
+                    total: 0
+                  error: false
+                  message: null
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'http://shofy.test/api/v1/posts/filters?page=1'
+                      last:
+                        type: string
+                        example: 'http://shofy.test/api/v1/posts/filters?page=1'
+                      prev:
+                        type: string
+                        example: 'http://shofy.test/api/v1/posts/filters?page=14'
+                      next:
+                        type: string
+                        example: null
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 15
+                      from:
+                        type: string
+                        example: null
+                      last_page:
+                        type: integer
+                        example: 1
+                      links:
+                        type: array
+                        example:
+                          -
+                            url: 'http://shofy.test/api/v1/posts/filters?page=14'
+                            label: '&laquo; Previous'
+                            active: false
+                          -
+                            url: 'http://shofy.test/api/v1/posts/filters?page=1'
+                            label: '1'
+                            active: false
+                          -
+                            url: null
+                            label: 'Next &raquo;'
+                            active: false
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: 'http://shofy.test/api/v1/posts/filters?page=14'
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: 'http://shofy.test/api/v1/posts/filters'
+                      per_page:
+                        type: integer
+                        example: 17
+                      to:
+                        type: string
+                        example: null
+                      total:
+                        type: integer
+                        example: 0
+                  error:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: null
+      tags:
+        - Blog
+      security: []
+  '/api/v1/posts/{slug}':
+    get:
+      summary: 'Get post by slug'
+      operationId: getPostBySlug
+      description: ''
+      parameters:
+        -
+          in: query
+          name: slug
+          description: 'Find by slug of post.'
+          example: dicta
+          required: false
+          schema:
+            type: string
+            description: 'Find by slug of post.'
+            example: dicta
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: true
+                  data: null
+                  message: 'Not found'
+                properties:
+                  error:
+                    type: boolean
+                    example: true
+                  data:
+                    type: string
+                    example: null
+                  message:
+                    type: string
+                    example: 'Not found'
+      tags:
+        - Blog
+      security: []
+    parameters:
+      -
+        in: path
+        name: slug
+        description: 'The slug of the post.'
+        example: voluptatem
+        required: true
+        schema:
+          type: string
+  /api/v1/categories/filters:
+    get:
+      summary: 'Filters categories'
+      operationId: filtersCategories
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 5
+                      name: 'Organic Fruits'
+                      slug: organic-fruits
+                      url: 'http://shofy.test/blog/organic-fruits'
+                      description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                    -
+                      id: 2
+                      name: Fashion
+                      slug: fashion
+                      url: 'http://shofy.test/blog/fashion'
+                      description: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                    -
+                      id: 3
+                      name: Electronic
+                      slug: electronic
+                      url: 'http://shofy.test/blog/electronic'
+                      description: 'Quis qui aspernatur in quia hic eum. Est molestias assumenda nam iusto optio voluptatem et. Repudiandae dolores quibusdam ut adipisci. Molestiae sequi reprehenderit mollitia cum non.'
+                    -
+                      id: 6
+                      name: Ecological
+                      slug: ecological
+                      url: 'http://shofy.test/blog/ecological'
+                      description: 'Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.'
+                    -
+                      id: 1
+                      name: 'Crisp Bread & Cake'
+                      slug: crisp-bread-cake
+                      url: 'http://shofy.test/blog/crisp-bread-cake'
+                      description: 'Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.'
+                    -
+                      id: 4
+                      name: Commercial
+                      slug: commercial
+                      url: 'http://shofy.test/blog/commercial'
+                      description: 'Quas in id sit. Dolorem provident minima modi dolor est.'
+                  links:
+                    first: 'http://shofy.test/api/v1/categories/filters?page=1'
+                    last: 'http://shofy.test/api/v1/categories/filters?page=1'
+                    prev: null
+                    next: null
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://shofy.test/api/v1/categories/filters?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://shofy.test/api/v1/categories/filters'
+                    per_page: 10
+                    to: 6
+                    total: 6
+                  error: false
+                  message: null
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 5
+                        name: 'Organic Fruits'
+                        slug: organic-fruits
+                        url: 'http://shofy.test/blog/organic-fruits'
+                        description: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                      -
+                        id: 2
+                        name: Fashion
+                        slug: fashion
+                        url: 'http://shofy.test/blog/fashion'
+                        description: 'Blanditiis enim et sequi necessitatibus maxime mollitia fugiat doloremque. Est soluta dolores et in ab dolores. Et porro dolor rerum tempore inventore quia dolor.'
+                      -
+                        id: 3
+                        name: Electronic
+                        slug: electronic
+                        url: 'http://shofy.test/blog/electronic'
+                        description: 'Quis qui aspernatur in quia hic eum. Est molestias assumenda nam iusto optio voluptatem et. Repudiandae dolores quibusdam ut adipisci. Molestiae sequi reprehenderit mollitia cum non.'
+                      -
+                        id: 6
+                        name: Ecological
+                        slug: ecological
+                        url: 'http://shofy.test/blog/ecological'
+                        description: 'Ut blanditiis incidunt adipisci numquam vel repellat consequuntur. Aut nostrum molestiae non. Omnis ut quisquam dignissimos esse. Consequuntur aliquam et et repellendus esse.'
+                      -
+                        id: 1
+                        name: 'Crisp Bread & Cake'
+                        slug: crisp-bread-cake
+                        url: 'http://shofy.test/blog/crisp-bread-cake'
+                        description: 'Nemo et sit consequuntur animi quae ab. Aut quo voluptas quas. Ab aliquam deleniti sunt consequatur dicta id.'
+                      -
+                        id: 4
+                        name: Commercial
+                        slug: commercial
+                        url: 'http://shofy.test/blog/commercial'
+                        description: 'Quas in id sit. Dolorem provident minima modi dolor est.'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 5
+                        name:
+                          type: string
+                          example: 'Organic Fruits'
+                        slug:
+                          type: string
+                          example: organic-fruits
+                        url:
+                          type: string
+                          example: 'http://shofy.test/blog/organic-fruits'
+                        description:
+                          type: string
+                          example: 'Quia aliquam quisquam est beatae vel. Optio non possimus odit animi. Laborum nihil laudantium quia sunt officia.'
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'http://shofy.test/api/v1/categories/filters?page=1'
+                      last:
+                        type: string
+                        example: 'http://shofy.test/api/v1/categories/filters?page=1'
+                      prev:
+                        type: string
+                        example: null
+                      next:
+                        type: string
+                        example: null
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      links:
+                        type: array
+                        example:
+                          -
+                            url: null
+                            label: '&laquo; Previous'
+                            active: false
+                          -
+                            url: 'http://shofy.test/api/v1/categories/filters?page=1'
+                            label: '1'
+                            active: true
+                          -
+                            url: null
+                            label: 'Next &raquo;'
+                            active: false
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: null
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: 'http://shofy.test/api/v1/categories/filters'
+                      per_page:
+                        type: integer
+                        example: 10
+                      to:
+                        type: integer
+                        example: 6
+                      total:
+                        type: integer
+                        example: 6
+                  error:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: null
+      tags:
+        - Blog
+      security: []
+  '/api/v1/categories/{slug}':
+    get:
+      summary: 'Get category by slug'
+      operationId: getCategoryBySlug
+      description: ''
+      parameters:
+        -
+          in: query
+          name: slug
+          description: 'Find by slug of category.'
+          example: nesciunt
+          required: false
+          schema:
+            type: string
+            description: 'Find by slug of category.'
+            example: nesciunt
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: true
+                  data: null
+                  message: 'Not found'
+                properties:
+                  error:
+                    type: boolean
+                    example: true
+                  data:
+                    type: string
+                    example: null
+                  message:
+                    type: string
+                    example: 'Not found'
+      tags:
+        - Blog
+      security: []
+    parameters:
+      -
+        in: path
+        name: slug
+        description: 'The slug of the category.'
+        example: reiciendis
+        required: true
+        schema:
+          type: string
+  /api/v1/me:
+    get:
+      summary: 'Get the user profile information.'
+      operationId: getTheUserProfileInformation
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: true
+                  data: null
+                  message: Unauthenticated.
+                properties:
+                  error:
+                    type: boolean
+                    example: true
+                  data:
+                    type: string
+                    example: null
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Profile
+    put:
+      summary: 'Update profile'
+      operationId: updateProfile
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: 'First name.'
+                  example: et
+                last_name:
+                  type: string
+                  description: 'Last name.'
+                  example: delectus
+                phone:
+                  type: string
+                  description: Phone.
+                  example: ad
+                dob:
+                  type: string
+                  description: 'Date of birth.'
+                  example: facere
+                gender:
+                  type: string
+                  description: Gender
+                  example: at
+                description:
+                  type: string
+                  description: Description
+                  example: 'Expedita eveniet aliquam ducimus ab itaque.'
+                email:
+                  type: string
+                  description: Email.
+                  example: willms.asia@example.net
+              required:
+                - first_name
+                - last_name
+                - phone
+                - dob
+  /api/v1/update/avatar:
+    post:
+      summary: 'Update Avatar'
+      operationId: updateAvatar
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Profile
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                avatar:
+                  type: string
+                  format: binary
+                  description: 'Avatar file.'
+              required:
+                - avatar
+  /api/v1/update/password:
+    put:
+      summary: 'Update password'
+      operationId: updatePassword
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: 'The new password of user.'
+                  example: '\$IfQ]*C[Gj"'
+              required:
+                - password
+tags:
+  -
+    name: Authentication
+    description: ''
+  -
+    name: Blog
+    description: ''
+  -
+    name: Profile
+    description: ''
