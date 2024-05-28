@@ -1,63 +1,33 @@
-version: '3'
+version: '3.8'
 services:
-    app:
-        image: ghcr.io/archielite/laravel:php8.1
-        build:
-          dockerfile: Dockerfile
-        command: >
-           sh -c "
-           composer install &&
-           php artisan key:generate &&
-           php artisan migrate &&
-           php artisan cache:clear &&
-           php-fpm
-           "
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
-        ports:
-            - '88:80'
-        volumes:
-            - '.:/var/www/html'
-        networks:
-            - sail
-        depends_on:
-            - mysql
-    webserver:
-        image: nginx:alpine
-        container_name: nginx
-        restart: unless-stopped
-        ports:
-           - "8008:80"
-        volumes:
-           - .:/var/www
-           - ./nginx/conf.d:/etc/nginx/conf.d
-        depends_on:
-           - app
-           - mysql
-        networks:
-           - sail
-    mysql:
-        image: 'mysql/mysql-server:8.0'
-        ports:
-            - '3306:3306'
-        environment:
-            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ROOT_HOST: "%"
-            MYSQL_DATABASE: '${DB_DATABASE}'
-            MYSQL_USER: '${DB_USERNAME}'
-            MYSQL_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ALLOW_EMPTY_PASSWORD: 1
-        volumes:
-            - 'sail-mysql:/var/lib/mysql'
-        networks:
-            - sail
-        healthcheck:
-            test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
-            retries: 3
-            timeout: 5s
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: laravel_app
+    container_name: laravel_app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - laravel
+
+  webserver:
+    image: nginx:alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - laravel
+
 networks:
-    sail:
-        driver: bridge
+  laravel:
+
 volumes:
-    sail-mysql:
-        driver: local
+  dbdata:
