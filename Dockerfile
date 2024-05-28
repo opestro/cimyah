@@ -46,4 +46,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s \
     CMD curl -f http://localhost:8000 || exit 1
 
 # Run Laravel's development server
-CMD php artisan serve  --port=8000
+CMD ls -la /var/www && php artisan serve --host=0.0.0.0 --port=8000
