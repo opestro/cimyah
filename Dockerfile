@@ -6,25 +6,30 @@ WORKDIR /var/www
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
+    build-essential \
     libpng-dev \
-    libjpeg-dev \
+    libjpeg62-turbo-dev \
     libfreetype6-dev \
-    libzip-dev \
+    locales \
     zip \
+    jpegoptim optipng pngquant gifsicle \
+    vim \
     unzip \
     git \
+    curl \
     libonig-dev \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    libzip-dev \
+    libxml2-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libfreetype6-dev
 
-# Install and enable gd extension
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-enable gd
-
-# Install and enable other PHP extensions
-RUN docker-php-ext-install -j$(nproc) pdo mbstring zip exif pcntl \
-    && docker-php-ext-enable pdo mbstring zip exif pcntl calendar
-
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
