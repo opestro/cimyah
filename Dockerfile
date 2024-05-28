@@ -23,7 +23,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 
 # Install and enable other PHP extensions
 RUN docker-php-ext-install -j$(nproc) pdo mbstring zip exif pcntl \
-    && docker-php-ext-enable pdo mbstring zip exif pcntl
+    && docker-php-ext-enable pdo mbstring zip exif pcntl calendar
 
 
 # Install Composer
